@@ -1,0 +1,59 @@
+<div class="head-pages">
+  <h1>Choisissez votre futur Battle Monster !</h1>
+  <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+</div>
+
+<div class="display-form">
+  <form action="/monsters" method="get">
+    <div class="specie-select">
+      <select name="specie" id="specie-select" class="">
+          <option value="">Tous</option>
+          <option value="golem">Golem</option>
+          <option value="garou">Garou</option>
+          <option value="troll">Troll</option>
+      </select>
+      <input type="submit" value="Filter par espèce">
+    </div>
+  </form>
+</div>
+
+<div class="display-cards">
+  <% @monsters.each do |monster| %>
+    <%= link_to monster_path(monster) do %>
+
+      <% class_contrat = "contrat-non" %>
+      <% owner = User.find(monster.user_id) %>
+      <% owner.enlisted_monsters.each do |contract| %>
+        <% if contract.monster_id == monster.id && contract.actif == true %>
+          <% class_contrat = "contrat-oui" %>
+        <% end %>
+      <% end %>
+
+      <div class="card_container <%= class_contrat %>">
+        <div class="card" style='background-image: url("http://onepage.dropagence.fr/game/place/game-background-<%= rand(1..5) %>.png");'>
+          <%= cl_image_tag(monster.image.key, width:"180px") %>
+          <div class="monster-info">
+            <span class="monster-info-top"><%= monster.name %></span>
+            <span class="monster-info-bottom">Lv <%= monster.level %> - <%= monster.price %> pc</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<% if cookies[:display] %>
+  <style>.pop { display : none } </style>
+<% else %>
+  <div class="pop">
+    <div class="pop-content">
+      <span class="pop-close">❌</span>
+      <%= image_tag('http://onepage.dropagence.fr/game/place/pop.png', width:"800px") %>
+    </div>
+  </div>
+  <script>
+    function hide() { document.querySelector('.pop').style.display = "none"; }
+    document.querySelector('.pop-close').addEventListener("click", hide)
+  </script>
+  <% cookies[:display] = 'on' %>
+<% end %>

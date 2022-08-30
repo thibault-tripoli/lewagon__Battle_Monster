@@ -1,0 +1,35 @@
+.title-light {
+  color: white!important
+}
+
+.monster-body-contract {
+  width: 34%;
+  justify-content: space-around;
+}
+
+.pop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255,255,255,0.9);
+}
+
+.pop-content {
+  position: relative;
+}
+
+.pop-content img {
+  border-radius: 2px;
+}
+
+.pop-close {
+  position: absolute;
+  right: 0;
+  margin-top: -25px;
+  cursor: pointer;
+}

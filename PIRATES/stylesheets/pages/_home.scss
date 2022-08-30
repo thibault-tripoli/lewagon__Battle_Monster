@@ -1,0 +1,88 @@
+// Specific CSS for your home-page
+#home {
+  width: 100vw;
+  height: 100vh;
+  background: url("http://onepage.dropagence.fr/game/place/background-1.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#home .button a {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #499A90;
+  color:rgb(255, 255, 255);
+  font-family: 'Teko', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  box-shadow: 0px 2px 10px #000;
+  transition: opacity 1s ease;
+}
+
+#home .button a:hover  {
+  color:rgb(255, 255, 255);
+  opacity: 0.8;
+}
+
+#home .text {
+  font-family: 'Patrick Hand', cursive;
+  color:rgb(255, 255, 255);
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 3rem;
+}
+
+.logo {
+  transform: scale(0.9);
+  animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
+  infinite alternate;
+}
+
+@keyframes bopB {
+  0% {
+    transform: scale(0.9);
+  }
+  80%,
+  100% {
+    transform: scale(1) rotateZ(-3deg);
+  }
+}
+
+ .personnage1-walk {
+  position: absolute;
+  top:150px;
+  bottom: 0;
+  left:1700px;
+  right:0;
+  width: 600px;
+  height: 600px;
+  margin-left: 20px;
+  background: url('https://www.zupimages.net/up/22/34/txnl.png') right;
+  animation: play 1s steps(10) infinite, avance 8s linear;
+}
+@keyframes play {
+  from { background-position: 0px;}
+  to   { background-position: -6000px;}
+}
+
+@keyframes avance {
+  from { transform: translate(280px, 0);  }
+  to   { transform: translate(-2300px, 0); }
+}
+
+// .personnage1-wait {
+//   position: absolute;
+//   top:150px;
+//   bottom: 0;
+//   left:1050px;
+//   right:0;
+//   width: 600px;
+//   height: 600px;
+//   margin-left: 20px;
+//   background: url('https://zupimages.net/up/22/34/zy1y.png.png') right;
+// }
