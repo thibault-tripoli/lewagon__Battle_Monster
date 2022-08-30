@@ -1,2 +1,13 @@
-<h1>Battles#show</h1>
-<p>Find me in app/views/battles/show.html.erb</p>
+<div class="container chatroom">
+  <h1>Combat #<%= @battle.id %></h1>
+
+  <div id="arena">
+    <p><%= @deck1.user.name %> vs. <%= @deck2.user.name %></p>
+  </div>
+
+  <ul id="rounds">
+    <% deck = Deck.find(@battle.current_deck_id) %>
+    <% round = 1 %>
+    <li>Round <%= round %> : <%= deck.user.name %> - <a href="#">attaque !</a></li>
+  </ul>
+</div>
