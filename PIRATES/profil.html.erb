@@ -1,0 +1,82 @@
+<div class="profil-info">
+  <%= cl_image_tag @user.avatar.key, class: 'profil-info-avatar' %>
+
+  <div class="profil-info-content">
+    <h1>Profil de <%= @user.name %></h1>
+    <ul>
+      <li><strong>PogCoin : </strong><%= @user.coin %> pc</li>
+      <li><strong>Monstre : </strong><%= @user.monsters.count %></li>
+      <li><strong>Contrat : </strong><%= @user.contracts.where(actif: true).count %></li>
+    </ul>
+  </div>
+</div>
+
+<% if @user.contracts.where(actif: true).count > 0 %>
+  <div class="profil-contrat">
+    <h2>Mes Contrats</h2>
+    <div class="display-cards">
+      <% @user.contracts.each do |contract| %>
+        <% if contract.actif == true %>
+          <div class="card-item text-center">
+            <%= link_to monster_path(contract.monster) do %>
+              <div class="card_container">
+                <div class="card" style='background-image: url("http://onepage.dropagence.fr/game/place/game-background-<%= rand(1..5) %>.png");'>
+                  <%= cl_image_tag(contract.monster.image.key, width:"180px") %>
+                  <div class="monster-info">
+                    <span class="monster-info-top"><%= contract.monster.name %></span>
+                    <span class="monster-info-bottom">Lv <%= contract.monster.level %> - <%= contract.monster.price %> pc</span>
+                  </div>
+                </div>
+                <%= link_to '❌', decline_path(contract), class: 'decline-contrat' %></li>
+              </div>
+              <p class="card-label monsters-battle"><%= contract.battles %> combats restants</p>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if !@user.monsters.first.nil? %>
+  <div class="profil-monsters">
+    <h2>Mes Monstres</h2>
+    <div class="display-cards">
+      <% @user.monsters.each do |monster|%>
+
+        <div class="card-item text-center">
+          <% monster_status = monster.actif.to_s %>
+          <% @user.enlisted_monsters.each do |contract| %>
+            <% if contract.monster_id == monster.id && contract.actif == true %>
+              <% monster_status = "contrat" %>
+            <% end %>
+          <% end %>
+
+          <%= link_to monster_path(monster) do %>
+          <div class="card_container" id="card-monster-<%= monster.id %>">
+            <div class="card" style='background-image: url("http://onepage.dropagence.fr/game/place/game-background-<%= rand(1..5) %>.png");'>
+              <%= cl_image_tag(monster.image.key, width:"180px") %>
+              <div class="monster-info">
+                <span class="monster-info-top"><%= monster.name %></span>
+                <span class="monster-info-bottom">Lv <%= monster.level %> - <%= monster.price %> pc</span>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
+          <% if  monster_status == "true" %>
+            <p class="card-label monsters-off"><%= link_to 'Désactiver',  monster_off_path(monster) %></p>
+            <style>#card-monster-<%= monster.id %>:hover { border-color: rgb(13, 152, 13)!important }</style>
+          <% elsif  monster_status == "false" %>
+            <p class="card-label monsters-on"><%= link_to 'Activer',  monster_on_path(monster) %></p>
+            <style>#card-monster-<%= monster.id %>:hover { border-color: rgb(207, 8, 8)!important }</style>
+          <% elsif  monster_status == "contrat" %>
+            <p class="card-label monsters-contrat">Sous contrat</p>
+            <style>#card-monster-<%= monster.id %>:hover { border-color: rgb(201, 132, 3)!important }</style>
+          <% end %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+<% end %>
