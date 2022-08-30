@@ -11,13 +11,12 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= render 'layouts/header' if !current_page?(root_path) %>
       <div class="container py-5">
         <%= yield %>
       </div>
-    <%= render 'layouts/footer' %>
+    <%= render 'layouts/footer' if !current_page?(root_path) %>
 
   </body>
 </html>
