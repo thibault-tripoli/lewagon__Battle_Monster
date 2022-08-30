@@ -1,10 +1,14 @@
 class BattlesController < ApplicationController
   def show
     @battle = Battle.find(1)
-    @deck1 = Deck.create(user_id: 1, monster_id: 1, battle_id: @battle.id, attack_id: 1, hp: 100)
-    @deck2 = Deck.create(user_id: 2, monster_id: 2, battle_id: @battle.id, attack_id: 2, hp: 100)
-    @battle.current_deck_id = @deck1.id
+    @deck1 = Deck.find(1)
+    @deck2 = Deck.find(2)
+    toas = rand(1..2)
+    toas == 1 ? deck = @deck1 : deck = @deck2
+    @battle.current_deck_id = deck.id
     @battle.save
+    @current_deck = Deck.find(@battle.current_deck_id)
+    @round = 0
   end
 
   def new
@@ -20,5 +24,8 @@ class BattlesController < ApplicationController
   end
 
   def edit
+  end
+
+  def current_deck
   end
 end

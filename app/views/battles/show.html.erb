@@ -6,8 +6,6 @@
   </div>
 
   <ul id="rounds">
-    <% deck = Deck.find(@battle.current_deck_id) %>
-    <% round = 1 %>
-    <li>Round <%= round %> : <%= deck.user.name %> - <a href="#">attaque !</a></li>
+    <li>Round <%= @round += 1 %> : <%= @current_deck.user.name %> - <a href="#">attaque !</a></li>
   </ul>
 </div>
