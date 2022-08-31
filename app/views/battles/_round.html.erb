@@ -1,3 +1,18 @@
-<% deck = Deck.find(@battle.current_deck_id) %>
-<% round = 1 %>
-<li>Round <%= round %> : <%= deck.user.name %> - <a href="#">attaque !</a></li>
+<div class="round" data-battle-subscription-target="round">
+
+  <p><%= deck1.user.name %> (<%= deck1.hp %> hp) vs. <%= deck2.user.name %> (<%= deck2.hp %> hp)</p>
+  <% if deck1.hp <= 0 %>
+    <h3>Round <%= battle.round - 1 %></h3>
+    <p>Game Over - <%= deck2.user.name %> wins ! (<%= deck2.hp %> hp)</p>
+  <% elsif deck2.hp <= 0 %>
+    <h3>Round <%= battle.round - 1 %></h3>
+    <p>Game Over - <%= deck1.user.name %> wins ! (<%= deck1.hp %> hp)</p>
+  <% else %>
+    <h3>Round <%= battle.round %></h3>
+    <% if current_deck.user == current_user %>
+      <p><%= current_deck.user.name %> à toi de jouer > <a data-action="click->battle-subscription#next" href="<%= battle_next_round_path(battle, next_deck) %>">Lancer <%= battle.current_deck.attack.name %> !</a></p>
+    <% else %>
+      <p>Votre adversaire est en train de jouer !</p>
+    <% end %>
+  <% end %>
+</div>
