@@ -20,11 +20,9 @@ class PagesController < ApplicationController
   def start_tutoriel
   end
 
-
   def combats
   end
 
   def edit
   end
-
 end
