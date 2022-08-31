@@ -1,2 +1,40 @@
-<h1>Templates#menu</h1>
-<p>Find me in app/views/templates/menu.html.erb</p>
+<div class="menu-container">
+  <div class="container-left">
+    <div class="monster-left-top">
+      <img src="http://onepage.dropagence.fr/game/place/garou-2-1.png" alt="Golem" width="250px" height="250px">
+    </div>
+    <div class="monster-left-bot">
+      <img src="http://onepage.dropagence.fr/game/place/garou-1-1.png" alt="Golem" width="250px" height="250px">
+    </div>
+  </div>
+  <div class="container-middle">
+    <div class="btn-menu">
+      <p class="menu-name">
+        <%= link_to "CAMPAGNE", templates_campagne_path  %>
+      </p>
+    </div>
+    <div class="btn-menu">
+      <p class="menu-name">
+        <%= link_to "COMBAT", templates_combat_path %>
+      </p>
+    </div>
+    <div class="btn-menu">
+      <p class="menu-name">
+        <%= link_to "MONSTER PLACE", templates_monsterplace_path %>
+      </p>
+    </div>
+    <div class="btn-menu">
+      <p class="menu-name">
+        <%= link_to "MONSTER DEX", templates_monsterdex_path %>
+      </p>
+    </div>
+  </div>
+  <div class="container-right d-flex flex-column">
+    <div class="monster-right-top">
+      <img src="http://onepage.dropagence.fr/game/place/garou-1-1.png" alt="Golem" width="600px" height="600px">
+    </div>
+    <div class="monster-right-bot">
+      <img src="http://onepage.dropagence.fr/game/place/garou-2-2.png" alt="Golem" width="600px" height="600px">
+    </div>
+  </div>
+</div>
