@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "page/start_monster", to: 'pages#start_monster'
   get "page/start_tutoriel", to: 'pages#start_tutoriel'
 
-
+  resources :monsters, only: [:create]
   get 'templates/home'
   get 'templates/menu'
   get 'templates/profil'

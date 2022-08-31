@@ -1,1 +1,7 @@
 start_monster
+
+<%= simple_form_for @monster do |f| %>
+  <%= f.input :name %>
+  <%= f.input :specie, as: :radio_buttons, collection: Specie.all%>
+  <%= f.button :submit %>
+<% end %>
