@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import BattleSubscriptionController from "./battle_subscription_controller"
+application.register("battle-subscription", BattleSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
