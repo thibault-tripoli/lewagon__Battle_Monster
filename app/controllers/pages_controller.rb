@@ -6,4 +6,18 @@ class PagesController < ApplicationController
 
   def profil
   end
+
+  def main
+  end
+
+  def start_intro
+  end
+
+  def start_monster
+
+  end
+
+  def start_tutoriel
+  end
+
 end
