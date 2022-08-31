@@ -14,8 +14,8 @@ Battle.destroy_all
 
 puts "creation de personnage..."
 
-player_one = User.create!(email: "thibault@battle.com", password: "123456", name: "Thibault")
-player_two = User.create!(email: "tarek@battle.com", password: "123456", name: "Tarek")
+player_one = User.create!(email: "thibault@battle.com", password: "123456", name: "Thibault", pc: 0)
+player_two = User.create!(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0)
 
 puts "creation du bestiaire"
 

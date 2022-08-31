@@ -3,28 +3,147 @@
   data-battle-subscription-deck-id-value="<%= @my_deck.id %>"
 >
 
+  <style>
+    .arena-info, .arena-deck, .deck-label {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .arena-attack-1, .arena-attack-2 {
+      display: none;
+    }
+
+    .progress-bar {
+      background-color: #1a1a1a;
+      height: 25px;
+      width: 350px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      -moz-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+      -webkit-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+      box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar span {
+        position: absolute;
+        height: 100%;
+        background-color: #777;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+        -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+        -webkit-transition: width .4s ease-in-out;
+        -moz-transition: width .4s ease-in-out;
+        -ms-transition: width .4s ease-in-out;
+        -o-transition: width .4s ease-in-out;
+        transition: width .4s ease-in-out;
+    }
+
+
+    .blue span {
+        background-color: #499A90;
+    }
+
+  </style>
+
   <h1>Combat #<%= @battle.id %></h1>
 
   <div class="rounds" data-battle-subscription-target="rounds">
 
     <div class="round" data-battle-subscription-target="round">
 
-      <p><%= @deck1.user.name %> (<%= @deck1.hp %> hp) vs. <%= @deck2.user.name %> (<%= @deck2.hp %> hp)</p>
-      <% if @deck1.hp <= 0 %>
-        <h3>Round <%= @battle.round - 1 %></h3>
-        <p>Game Over - <%= @deck2.user.name %> wins ! (<%= @deck2.hp %> hp)</p>
-      <% elsif @deck2.hp <= 0 %>
-        <h3>Round <%= @battle.round - 1 %></h3>
-        <p>Game Over - <%= @deck1.user.name %> wins ! (<%= @deck1.hp %> hp)</p>
+      <div class="arena">
+
+        <div class="arena-info">
+          <div class="arena-deck-1">
+            <div class="deck-label"><p><%= @deck1.monster.name %></p><p><%= @deck1.monster.xp %> xp</p></div>
+            <div class="progress-bar blue stripes"><span class="prog-1" style="width:<%= @deck1.hp %>%"></span></div>
+          </div>
+
+          <div class="arena-limit">
+            <p>VS</p>
+          </div>
+
+          <div class="arena-deck-2">
+            <div class="deck-label"><p><%= @deck2.monster.xp %> xp</p><p><%= @deck2.monster.name %></p></div>
+            <div class="progress-bar blue stripes"><span class="prog-2" style="width:<%= @deck2.hp %>%"></span></div>
+          </div>
+        </div>
+
+        <div class="arena-deck">
+          <div class="arena-deck-1">
+            <p id="monster-1" class="idle">😈</p>
+          </div>
+
+          <div class="arena-attack">
+            <div class="arena-attack-1">
+              <p><%= @deck1.attack.name %></p>
+            </div>
+
+            <div class="arena-attack-2">
+              <p><%= @deck2.attack.name %></p>
+            </div>
+          </div>
+
+          <div class="arena-deck-2">
+            <p id="monster-2" class="idle">😈</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- trigger -->
+      <% if @current_deck.user == @deck1.user %>
+        <style>
+          .arena-attack-1 {display:block}
+        </style>
       <% else %>
-        <h3>Round <%= @battle.round %></h3>
-        <% if @current_deck.user == current_user %>
-          <p><%= @current_deck.user.name %> à toi de jouer > <a data-action="click->battle-subscription#next" href="<%= battle_next_round_path(@battle, @next_deck) %>">Lancer <%= @battle.current_deck.attack.name %> !</a></p>
-        <% else %>
-          <p>Votre adversaire est en train de jouer !</p>
-        <% end %>
+        <style>
+          .arena-attack-2 {display:block}
+        </style>
+      <% end %>
+      <!-- trigger -->
+
+      <p>----</p>
+
+      <% if @deck1.hp <= 0 %>
+
+        <div class="round-control">
+          <p>Game Over - <%= @deck2.user.name %> wins ! (<%= @deck2.hp %> hp)</p>
+          <%= simple_form_for(@battle) do |f| %>
+            <%= f.input :winner, :as => :hidden, :input_html => { :value => @deck2.user_id, :class => 'form-control' } %>
+            <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
+          <% end %>
+        </div>
+
+      <% elsif @deck2.hp <= 0 %>
+
+        <div class="round-control">
+          <p>Game Over - <%= @deck1.user.name %> wins ! (<%= @deck1.hp %> hp)</p>
+          <%= simple_form_for(@battle) do |f| %>
+            <%= f.input :winner_id, :as => :hidden, :input_html => { :value => @deck1.user_id, :class => 'form-control' } %>
+            <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
+          <% end %>
+        </div>
+
+      <% else %>
+
+        <div class="round-control">
+          <% if @current_deck.user == current_user %>
+            <p>Round <%= @battle.round %> : <%= @current_deck.user.name %> à toi de jouer > <a data-action="click->battle-subscription#next" href="<%= battle_next_round_path(@battle, @next_deck) %>">Lancer <%= @current_deck.attack.name %> !</a></p>
+          <% else %>
+            <p>Round <%= @battle.round %> : Votre adversaire est en train de jouer !</p>
+          <% end %>
+        </div>
+
       <% end %>
 
+      <p>----</p>
     </div>
   </div>
 
