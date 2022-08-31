@@ -37,3 +37,18 @@
   background: #499A90;
   box-shadow: 0px 3px 20px 0px #499A90;
 }
+
+.position-absolute{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 100%;
+  left: 50%;
+  height: 150px;
+  width: 200px;
+  object-fit: contain;
+  transition: all 0.1s ease-in;
+  &:hover{
+    height: 200px;
+    width: 210px;
+  }
+}
