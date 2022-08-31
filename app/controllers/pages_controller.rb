@@ -14,8 +14,10 @@ class PagesController < ApplicationController
   end
 
   def start_monster
+
   end
 
   def start_tutoriel
   end
+
 end
