@@ -9,6 +9,8 @@ Attack.destroy_all
 Monster.destroy_all
 User.destroy_all
 Specie.destroy_all
+Deck.destroy_all
+Battle.destroy_all
 
 puts "creation de personnage..."
 
@@ -27,4 +29,9 @@ puts "creation des stars du jeu..."
 Monster.create!(name: "billy crawford", user_id: player_one.id, specie_id: specie_one.id, xp: 0)
 Monster.create!(name: "durdur", user_id: player_two.id, specie_id: specie_two.id, xp: 0)
 
-puts " creation de votre pasteque euhhh de votre arene"
+puts "creation d'une battle + 2 decks"
+Battle.create!(pc_win: 500, xp_win: 150, status: "pending")
+Deck.create!(user_id: 1, monster_id: 1, attack_id: 1, battle_id: 1, hp: 100)
+Deck.create!(user_id: 2, monster_id: 2, attack_id: 2, battle_id: 1, hp: 100)
+
+puts "Tout a été créé avec succès !"

@@ -4,11 +4,9 @@ class BattlesController < ApplicationController
     @deck1 = Deck.find(1)
     @deck2 = Deck.find(2)
     toas = rand(1..2)
-    toas == 1 ? deck = @deck1 : deck = @deck2
-    @battle.current_deck_id = deck.id
-    @battle.save
-    @current_deck = Deck.find(@battle.current_deck_id)
-    @round = 0
+    @battle.current_deck = toas == 1 ? @deck1 : @deck2
+    @battle.save!
+    @current_deck = @battle.current_deck
   end
 
   def new
@@ -24,8 +22,5 @@ class BattlesController < ApplicationController
   end
 
   def edit
-  end
-
-  def current_deck
   end
 end
