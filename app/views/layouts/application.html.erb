@@ -13,7 +13,7 @@
   <body>
     <%= render "shared/flashes" %>
     <%= render 'layouts/header' if !current_page?(root_path) %>
-      <div class="container py-5">
+      <div class="container py-5 mt-5">
         <%= yield %>
       </div>
     <%= render 'layouts/footer' if !current_page?(root_path) %>
