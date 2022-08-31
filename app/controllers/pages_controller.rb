@@ -15,14 +15,16 @@ class PagesController < ApplicationController
 
   def start_monster
     @monster = Monster.new
-    @monster.name?
-    @monster.save
   end
 
   def start_tutoriel
   end
 
-  def name?
-    @name_monster = gets.chomp
+
+  def combats
   end
+
+  def edit
+  end
+
 end

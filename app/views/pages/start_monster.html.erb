@@ -1,7 +1,7 @@
 start_monster
 
 <%= simple_form_for @monster do |f| %>
-  <%= f.input :name %>
-  <%= f.input :specie, as: :radio_buttons, collection: Specie.all%>
+  <%= f.input :specie_id, as: :radio_buttons, collection: Specie.all, label: "choisis l'espece de ton monstre", include_blank: :empty %>
+  <%= f.input :name,  label: "donne un nom a ton monstre" %>
   <%= f.button :submit %>
 <% end %>
