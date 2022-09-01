@@ -20,8 +20,11 @@
 
     <div class="arena-deck">
       <div class="arena-deck-1">
-        <p id="monster-1" class="idle">😈</p>
-      </div>
+        <% if current_deck.user == current_user %>
+          <p id="monster-1" class="idle">😈</p>
+        <% else %>
+          <p id="monster-1" class="attack">😈</p>
+        <% end %>      </div>
 
       <div class="arena-attack">
         <div class="arena-attack-1">
@@ -34,7 +37,11 @@
       </div>
 
       <div class="arena-deck-2">
-        <p id="monster-2" class="idle">😈</p>
+        <% if current_deck.user == current_user %>
+          <p id="monster-2" class="idle">😈</p>
+        <% else %>
+          <p id="monster-2" class="attack">😈</p>
+        <% end %>
       </div>
     </div>
 
