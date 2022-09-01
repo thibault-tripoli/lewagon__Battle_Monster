@@ -1,37 +1,81 @@
 // animations
 
-////// Title
+#arena-attack-1, #arena-attack-2 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  top: -150px;
+}
 
-.attack
+#arena-attack-1 h3, #arena-attack-2 h3, .battle h3 {
+  padding: 0;
+  margin: 0 auto;
+  background-color: transparent;
+}
+
+.battle h3 {
+  margin: 0;
+}
 
 .attack-in {
-  position: absolute;
-  bottom: 50%;
-  -webkit-animation: slide-in 2s linear;
-  -moz-animation: slide-in 2s linear;
-  -o-animation: slide-in 2s linear;
-  animation: slide-in 2s linear;
+  top: 50vh;
+  animation: attack-in 2s;
 }
 
-@-webkit-keyframes slide-in {
-  from { top: -1000px; }
-  to { bottom: 50%; }
+@-webkit-keyframes attack-in {
+  from { top: -150px }
+  to { top: 50vh }
 }
 
-@-moz-keyframes slide-in {
-  from { top: -1000px; }
-  to { bottom: 50%; }
+@-moz-keyframes attack-in {
+  from { top: -150px }
+  to { top: 50vh }
 }
 
-@-o-keyframes slide-in {
-  from { top: -1000px; }
-  to { bottom: 50%; }
+@-o-keyframes attack-in {
+  from { top: -150px }
+  to { top: 50vh }
 }
 
-@keyframes slide-in {
-  from { top: -1000px; }
-  to { bottom: 50%; }
+@keyframes attack-in {
+  from { top: -150px }
+  to { top: 50vh }
 }
+
+// .attack-out {
+//   top: 50vh;
+//   animation: attack-out 2s;
+// }
+
+// @-webkit-keyframes attack-out {
+//   from { top: 50px }
+//   to { top: -150px }
+// }
+
+// @-moz-keyframes attack-out {
+//   from { top: 50px }
+//   to { top: -150px }
+// }
+
+// @-o-keyframes attack-out {
+//   from { top: 50px }
+//   to { top: -150px }
+// }
+
+// @keyframes attack-out {
+//   from { top: 50px }
+//   to { top: -150px }
+// }
 
 ////// Golem
 
@@ -99,7 +143,56 @@
   to { background-position: -4000px; } /* <-- width of spritesheet*/
 }
 
+.garou.hurt, .golem.hurt {
+  animation: clignote .5s linear 3!important;
+}
+@keyframes clignote {
+  50% { opacity: 0; }
+}
 
+@-webkit-keyframes clignote {
+  50% { opacity: 0; }
+}
+
+@-moz-keyframes clignote {
+  50% { opacity: 0; }
+}
+
+@-o-keyframes clignote {
+  50% { opacity: 0; }
+}
+
+// .golem.hurt {
+//   height: 400px;
+//   width: 400px;
+//   margin: 0 auto;
+//   background: url("http://onepage.dropagence.fr/game/anim/golem-hurt.png");
+//   background-size: cover;
+//   -webkit-animation: golem-hurt 1s steps(5);
+//   -moz-animation: golem-hurt 1s steps(5);
+//   -o-animation: golem-hurt 1s steps(5);
+//   animation: golem-hurt 1s steps(5);
+// }
+
+// @-webkit-keyframes golem-hurt {
+//   from { background-position: 0px; }
+//   to { background-position: -2000px; }  /* <-- width of spritesheet*/
+// }
+
+// @-moz-keyframes golem-hurt {
+//   from { background-position: 0px; }
+//   to { background-position: -2000px; } /* <-- width of spritesheet*/
+// }
+
+// @-o-keyframes golem-hurt {
+//   from { background-position: 0px; }
+//   to { background-position: -2000px; } /* <-- width of spritesheet*/
+// }
+
+// @keyframes golem-hurt {
+//   from { background-position: 0px; }
+//   to { background-position: -2000px; } /* <-- width of spritesheet*/
+// }
 
 ////// Garou
 
@@ -213,5 +306,5 @@
 }
 
 .blue span { background-color: #499A90 }
-.controls-on { display: block }
-.controls-off { display: none }
+.controls-off { visibility: hidden }
+.nx-control { text-align: center }

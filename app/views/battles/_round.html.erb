@@ -1,6 +1,5 @@
 <div class="round" data-battle-subscription-target="round">
   <div id="round-controls">
-  <p>----</p>
 
     <% if deck1.hp <= 0 %>
 
@@ -24,16 +23,19 @@
 
     <% else %>
 
-      <div class="nx-control">
-        <% if current_deck.user == current_user %>
-          <p>Round <%= battle.round %> : <%= current_deck.user.name %> à toi de jouer > <a data-action="click->battle-subscription#next" href="<%= battle_next_round_path(battle, next_deck) %>">Lancer <%= current_deck.attack.name %> !</a></p>
-        <% else %>
-          <p>Round <%= battle.round %> : Votre adversaire est en train de jouer !</p>
-        <% end %>
-      </div>
+        <div class="nx-control">
+          <% if current_deck.user == current_user %>
+            <h2>Round <%= battle.round %></h2>
+            <h3><%= current_deck.user.name %> à toi de jouer !</h3>
+            <p><a class="btn-combats" data-action="click->battle-subscription#next" href="<%= battle_next_round_path(battle, next_deck) %>">Lancer <%= current_deck.attack.name %></a></p>
+          <% else %>
+            <h2>Round <%= battle.round %></h2>
+            <h3>Votre adversaire est en train de jouer !</h3>
+            <p><a class="btn-combats">Aucune action disponible</a></p>
+          <% end %>
+        </div>
 
     <% end %>
 
-  <p>----</p>
   </div>
 </div>
