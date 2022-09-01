@@ -12,13 +12,13 @@
 
   <body>
     <%= render "shared/flashes" %>
-    <%= render 'layouts/header' if !current_page?(templates_home_path) %>
+    <%= render 'layouts/header' if !current_page?( root_path) %>
     <%# changement de root vers template home %>
       <%# <div class="container py-5"> %>
        <%# #suppression mt-5 %>
         <%= yield %>
       <%# </div> %>
-    <%= render 'layouts/footer' if !current_page?(templates_home_path) %>
+    <%= render 'layouts/footer' if !current_page?(root_path) %>
 
   </body>
 </html>
