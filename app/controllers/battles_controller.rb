@@ -52,13 +52,15 @@ class BattlesController < ApplicationController
     @current_deck.save
 
     if @battle.save
+      deck1_html = render_to_string(partial: "round", locals: { battle: @battle, deck1: @deck1, deck2: @deck2, current_deck: @current_deck, next_deck: @next_deck, current_user: @deck1.user })
       DeckChannel.broadcast_to(
         @deck1,
-        render_to_string(partial: "round", locals: { battle: @battle, deck1: @deck1, deck2: @deck2, current_deck: @current_deck, next_deck: @next_deck, current_user: @deck1.user })
+        { html: deck1_html, attack: @my_deck.id, deck1_HP: @deck1.hp, deck2_HP: @deck2.hp }.to_json
       )
+      deck2_html = render_to_string(partial: "round", locals: { battle: @battle, deck1: @deck1, deck2: @deck2, current_deck: @current_deck, next_deck: @next_deck, current_user: @deck2.user })
       DeckChannel.broadcast_to(
         @deck2,
-        render_to_string(partial: "round", locals: { battle: @battle, deck1: @deck1, deck2: @deck2, current_deck: @current_deck, next_deck: @next_deck, current_user: @deck2.user })
+        { html: deck2_html, attack: @my_deck.id, deck1_HP: @deck1.hp, deck2_HP: @deck2.hp }.to_json
       )
       head :ok
       # redirect_to battle_path(@battle)
