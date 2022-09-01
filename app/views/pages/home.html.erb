@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<body id="home">
+  <%# <div class="container py-5"> %>
+    <div class="home-container">
+      <div class="logo-container">
+        <img class="logo" src="http://onepage.dropagence.fr/game/place/logo-bm.png" alt="Logo Battle Monster" >
+      </div>
+
+      <div class="btn-home">
+        <%= link_to "Connexion", templates_menu_path  %>
+      </div>
+
+      <div class="btn-home">
+        <%= link_to "Inscription", templates_inscription_path  %>
+      </div>
+
+    </div>
+  <%# </div> %>
+</body>
