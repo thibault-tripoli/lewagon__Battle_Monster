@@ -1,2 +1,4 @@
 <h1>Pages#profil</h1>
 <p>liste variable</p>
+<%= @user.name %>
+<%= cl_image_tag @user.avatar.key, class: 'profil-info-avatar' %>

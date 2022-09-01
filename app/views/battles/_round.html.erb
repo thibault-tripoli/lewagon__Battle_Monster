@@ -1,18 +1,84 @@
 <div class="round" data-battle-subscription-target="round">
 
-  <p><%= deck1.user.name %> (<%= deck1.hp %> hp) vs. <%= deck2.user.name %> (<%= deck2.hp %> hp)</p>
-  <% if deck1.hp <= 0 %>
-    <h3>Round <%= battle.round - 1 %></h3>
-    <p>Game Over - <%= deck2.user.name %> wins ! (<%= deck2.hp %> hp)</p>
-  <% elsif deck2.hp <= 0 %>
-    <h3>Round <%= battle.round - 1 %></h3>
-    <p>Game Over - <%= deck1.user.name %> wins ! (<%= deck1.hp %> hp)</p>
+  <div class="arena">
+
+    <div class="arena-info">
+      <div class="arena-deck-1">
+        <div class="deck-label"><p><%= deck1.monster.name %></p><p><%= deck1.monster.xp %> xp</p></div>
+        <div class="progress-bar blue stripes"><span class="prog-1" style="width:<%= deck1.hp %>%"></span></div>
+      </div>
+
+      <div class="arena-limit">
+        <p>VS</p>
+      </div>
+
+      <div class="arena-deck-2">
+        <div class="deck-label"><p><%= deck2.monster.xp %> xp</p><p><%= deck2.monster.name %></p></div>
+        <div class="progress-bar blue stripes"><span class="prog-2" style="width:<%= deck2.hp %>%"></span></div>
+      </div>
+    </div>
+
+    <div class="arena-deck">
+      <div class="arena-deck-1">
+        <% if current_deck.user == current_user %>
+          <p id="monster-1" class="idle">😈</p>
+        <% else %>
+          <p id="monster-1" class="attack">😈</p>
+        <% end %>      </div>
+
+      <div class="arena-attack">
+        <div class="arena-attack-1">
+          <p><%= deck1.attack.name %></p>
+        </div>
+
+        <div class="arena-attack-2">
+          <p><%= deck2.attack.name %></p>
+        </div>
+      </div>
+
+      <div class="arena-deck-2">
+        <% if current_deck.user == current_user %>
+          <p id="monster-2" class="idle">😈</p>
+        <% else %>
+          <p id="monster-2" class="attack">😈</p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- trigger -->
+  <% if @current_deck.user == @deck1.user %>
+    <style>
+      .arena-attack-1 {display:block}
+    </style>
   <% else %>
-    <h3>Round <%= battle.round %></h3>
+    <style>
+      .arena-attack-2 {display:block}
+    </style>
+  <% end %>
+  <!-- trigger -->
+  <p>----</p>
+
+  <% if deck1.hp <= 0 %>
+    <p>Game Over - <%= deck2.user.name %> wins ! (<%= deck2.hp %> hp)</p>
+    <%= simple_form_for(battle) do |f| %>
+      <%= f.input :winner, :as => :hidden, :input_html => { :value => deck2.user_id, :class => 'form-control' } %>
+      <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
+    <% end %>
+  <% elsif deck2.hp <= 0 %>
+    <p>Game Over - <%= deck1.user.name %> wins ! (<%= deck1.hp %> hp)</p>
+    <%= simple_form_for(battle) do |f| %>
+      <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck1.user_id, :class => 'form-control' } %>
+      <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
+    <% end %>
+  <% else %>
     <% if current_deck.user == current_user %>
-      <p><%= current_deck.user.name %> à toi de jouer > <a data-action="click->battle-subscription#next" href="<%= battle_next_round_path(battle, next_deck) %>">Lancer <%= battle.current_deck.attack.name %> !</a></p>
+      <p>Round <%= battle.round %> : <%= current_deck.user.name %> à toi de jouer > <a data-action="click->battle-subscription#next" href="<%= battle_next_round_path(battle, next_deck) %>">Lancer <%= current_deck.attack.name %> !</a></p>
     <% else %>
-      <p>Votre adversaire est en train de jouer !</p>
+      <p>Round <%= battle.round %> : Votre adversaire est en train de jouer !</p>
     <% end %>
   <% end %>
+
+  <p>----</p>
 </div>
