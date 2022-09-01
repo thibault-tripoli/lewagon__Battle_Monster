@@ -1,0 +1,215 @@
+// animations
+
+////// Title
+
+.attack-in {
+  position: absolute;
+  bottom: 50%;
+  -webkit-animation: slide-in 2s linear;
+  -moz-animation: slide-in 2s linear;
+  -o-animation: slide-in 2s linear;
+  animation: slide-in 2s linear;
+}
+
+@-webkit-keyframes slide-in {
+  from { top: -1000px; }
+  to { bottom: 50%; }
+}
+
+@-moz-keyframes slide-in {
+  from { top: -1000px; }
+  to { bottom: 50%; }
+}
+
+@-o-keyframes slide-in {
+  from { top: -1000px; }
+  to { bottom: 50%; }
+}
+
+@keyframes slide-in {
+  from { top: -1000px; }
+  to { bottom: 50%; }
+}
+
+////// Golem
+
+.golem.idle {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  background: url("http://onepage.dropagence.fr/game/anim/golem-idle.png");
+  background-size: cover;
+  -webkit-animation: golem-idle 1s steps(8) infinite;
+  -moz-animation: golem-idle 1s steps(8) infinite;
+  -o-animation: golem-idle 1s steps(8) infinite;
+  animation: golem-idle 1s steps(8) infinite;
+}
+
+@-webkit-keyframes golem-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; }  /* <-- width of spritesheet*/
+}
+
+@-moz-keyframes golem-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@-o-keyframes golem-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@keyframes golem-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+.golem.attack {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  background: url("http://onepage.dropagence.fr/game/anim/golem-attack.png");
+  background-size: cover;
+  -webkit-animation: golem-attack 1s steps(8);
+  -moz-animation: golem-attack 1s steps(8);
+  -o-animation: golem-attack 1s steps(8);
+  animation: golem-attack 1s steps(8);
+}
+
+@-webkit-keyframes golem-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; }  /* <-- width of spritesheet*/
+}
+
+@-moz-keyframes golem-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@-o-keyframes golem-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@keyframes golem-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+
+
+////// Garou
+
+.garou.idle {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  background: url("http://onepage.dropagence.fr/game/anim/garou-idle.png");
+  background-size: cover;
+  -webkit-animation: garou-idle 1s steps(8) infinite;
+  -moz-animation: garou-idle 1s steps(8) infinite;
+  -o-animation: garou-idle 1s steps(8) infinite;
+  animation: garou-idle 1s steps(8) infinite;
+}
+
+@-webkit-keyframes garou-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; }  /* <-- width of spritesheet*/
+}
+
+@-moz-keyframes garou-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@-o-keyframes garou-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@keyframes garou-idle {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+.garou.attack {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  background: url("http://onepage.dropagence.fr/game/anim/garou-attack.png");
+  background-size: cover;
+  -webkit-animation: garou-attack 1s steps(8);
+  -moz-animation: garou-attack 1s steps(8);
+  -o-animation: garou-attack 1s steps(8);
+  animation: garou-attack 1s steps(8);
+}
+
+@-webkit-keyframes garou-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; }  /* <-- width of spritesheet*/
+}
+
+@-moz-keyframes garou-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@-o-keyframes garou-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+@keyframes garou-attack {
+  from { background-position: 0px; }
+  to { background-position: -4000px; } /* <-- width of spritesheet*/
+}
+
+
+// global
+
+.arena-info, .arena-deck, .deck-label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.arena-deck {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-bar {
+  background-color: #1a1a1a;
+  height: 25px;
+  width: 500px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+  -webkit-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+  box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar span {
+    position: absolute;
+    height: 100%;
+    background-color: #777;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    -webkit-transition: width .4s ease-in-out;
+    -moz-transition: width .4s ease-in-out;
+    -ms-transition: width .4s ease-in-out;
+    -o-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;
+}
+
+.blue span { background-color: #499A90 }
+.controls-on { display: block }
+.controls-off { display: none }

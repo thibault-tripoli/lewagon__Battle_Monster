@@ -19,8 +19,8 @@ player_two = User.create!(email: "tarek@battle.com", password: "123456", name: "
 
 puts "creation du bestiaire"
 
-specie_one = Specie.create!(name: "Garou")
-specie_two = Specie.create!(name: "Golem")
+specie_one = Specie.create!(name: "golem")
+specie_two = Specie.create!(name: "garou")
 
 attack_one = Attack.create!(damage: 25, name: "griffure sanglante", specie_id: specie_one.id)
 attack_two = Attack.create!(damage: 25, name: "jets de pierres", specie_id: specie_two.id)
