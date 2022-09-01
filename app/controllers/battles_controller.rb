@@ -1,35 +1,50 @@
 class BattlesController < ApplicationController
+  def match
+    # j'instancie la battle
+    # je trouve un user connecté
+    # je valide le match
+  end
+
+  def create
+    # j'enregistre la battle
+    # je redirige vers setup
+  end
+
+  def setup
+    # j'instancie le deck
+    # je valide
+  end
+
+  def setup_create
+    # j'enregistre le setup
+    # je redirige vers loading
+  end
+
+  def loading
+    # dès que battle a deux decks (Check avec Action Cable) => je lance le toas
+    #-> @battle = Battle.find(params[:id])
+    #-> @battle.current_deck = @battle.decks.sample
+    #-> @battle.save!
+    # je lance un timer (10s)
+    # time out => je redirige vers la show
+  end
+
   def show
-    @battle = Battle.first
-    @deck1 = Deck.first
-    @deck2 = Deck.second
-    # toas = rand(1..2)
-    # @battle.current_deck = toas == 1 ? @deck1 : @deck2
+    @battle = Battle.find(params[:id])
     @current_deck = @battle.current_deck
-    if current_user == @deck1.user
-      @next_deck = @deck2
-      @my_deck = @deck1
-    else
-      @next_deck = @deck1
-      @my_deck = @deck2
-    end
+    select_deck
   end
 
   def next_round
     @battle = Battle.find(params[:battle_id])
-    @deck1 = Deck.first
-    @deck2 = Deck.second
+    select_deck
 
-    if current_user == @deck1.user
-      @next_deck = @deck2
-      @my_deck = @deck1
+    if (@next_deck.hp - @my_deck.attack.damage).positive?
+      @battle.round += 1
+      @next_deck.hp -= @my_deck.attack.damage
     else
-      @next_deck = @deck1
-      @my_deck = @deck2
+      @next_deck.hp = 0
     end
-
-    @battle.round += 1
-    @next_deck.hp -= @my_deck.attack.damage
     @next_deck.save
 
     @current_deck = @battle.current_deck
@@ -52,18 +67,32 @@ class BattlesController < ApplicationController
     end
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def destroy
-  end
-
   def update
+    @battle = Battle.find(params[:id])
+    @battle.update(game_over)
+    @battle.status = "finish"
+    if @battle.save!
+      redirect_to page_main_path
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
-  def edit
+  private
+
+  def select_deck
+    @deck1 = @battle.decks.first
+    @deck2 = @battle.decks.last
+    if current_user == @deck1.user
+      @next_deck = @deck2
+      @my_deck = @deck1
+    else
+      @next_deck = @deck1
+      @my_deck = @deck2
+    end
+  end
+
+  def game_over
+    params.require(:battle).permit(:winner_id)
   end
 end
