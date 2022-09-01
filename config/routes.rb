@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get "page/start_intro", to: 'pages#start_intro'
   get "page/start_monster", to: 'pages#start_monster'
   get "page/start_tutoriel", to: 'pages#start_tutoriel'
+  get "page/combats", to: "pages#combats"
+  get "page/fake", to: "pages#fake"
+
   # Pages : Profil
   get 'profil/:id', to: 'pages#profil', as: :profil
   get 'profil/:id/edit', to: 'pages#edit'
