@@ -6,7 +6,7 @@
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
-  clip-path: polygon(72% 52%, 100% 0, 100% 100%, 0 99%, 0 0);
+  // clip-path: polygon(72% 52%, 100% 0, 100% 100%, 0 99%, 0 0);
   box-shadow: 0px 3px 20px 0px #499a90;
   bottom: -1px;
 }
@@ -26,4 +26,12 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+#txt-footer {
+  font-size: 30px;
+  color: black;
+  opacity: 0.15;
+  font-family: "Teko";
+  margin:0 0;
 }

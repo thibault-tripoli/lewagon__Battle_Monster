@@ -1,2 +1,31 @@
-<h1>Templates#combat</h1>
-<p>Find me in app/views/templates/combat.html.erb</p>
+<div class="container py-5">
+  <div class="menu-container">
+    <div class="container-left">
+      <div class="monster-left-top">
+        <img src="https://zupimages.net/up/22/35/hi7i.png" alt="Golem" width="483px" height="700px">
+      </div>
+    </div>
+    <div class="container-middle">
+      <div class="btn-menu">
+        <p class="menu-name">
+          <%= link_to "1 VERSUS 1", templates_fake_path  %>
+        </p>
+      </div>
+      <div class="btn-menu">
+        <p class="menu-name">
+          <%= link_to "1 VERSUS BOT", templates_combat_path %>
+        </p>
+      </div>
+       <div class="btn-menu">
+        <p class="menu-name">
+          <%= link_to "RETOUR", templates_menu_path %>
+        </p>
+      </div>
+    </div>
+    <div class="container-right">
+      <div class="monster-right-top">
+          <img src="https://zupimages.net/up/22/35/cxbd.png" alt="Golem" width="483px" height="700px">
+      </div>
+    </div>
+  </div>
+</div>

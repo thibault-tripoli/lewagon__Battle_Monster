@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   get 'templates/profil'
   get 'templates/fake'
   get 'templates/combat'
-
+  get 'templates/inscription'
+  get 'templates/monsterdex'
+  get 'templates/monsterplace'
+  get 'templates/campagne'
 end
