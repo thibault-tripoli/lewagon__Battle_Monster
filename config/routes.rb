@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get 'profil/:id', to: 'pages#profil', as: :profil
   get 'profil/:id/edit', to: 'pages#edit'
 
-  # Templatges
+  # Templates
   get 'templates/home'
   get 'templates/menu'
   get 'templates/profil'
@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   get 'templates/monsterplace'
   get 'templates/monsterdex'
   get 'templates/inscription'
+
 end

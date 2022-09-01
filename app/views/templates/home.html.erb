@@ -1,17 +1,18 @@
 <body id="home">
-  <div class="home-container">
+  <%# <div class="container py-5"> %>
+    <div class="home-container">
+      <div class="logo-container">
+        <img class="logo" src="http://onepage.dropagence.fr/game/place/logo-bm.png" alt="Logo Battle Monster" >
+      </div>
 
-    <div>
-      <img class="logo" src="http://onepage.dropagence.fr/game/place/logo-bm.png" alt="Logo Battle Monster" width="10px" height="5px">
+      <div class="btn-home">
+        <%= link_to "Connexion", templates_menu_path  %>
+      </div>
+
+      <div class="btn-home">
+        <%= link_to "Inscription", templates_inscription_path  %>
+      </div>
+
     </div>
-
-    <div class="btn-home">
-      <%= link_to "Connexion", templates_menu_path  %>
-    </div>
-
-    <div class="btn-home">
-      <%= link_to "Inscription", templates_inscription_path  %>
-    </div>
-
-  </div>
+  <%# </div> %>
 </body>
