@@ -13,7 +13,7 @@
       <div class="arena-info">
         <div class="arena-deck-1">
           <div class="deck-label"><h3><%= @deck1.monster.name %></h3><p><%= @deck1.monster.xp %> xp</p></div>
-          <div class="progress-bar blue stripes"><span class="prog-1" style="width:<%= @deck1.hp %>%"></span></div>
+          <div id="progress1" class="progress-bar blue stripes"><span class="prog-1" style="width:<%= @deck1.hp %>%"></span></div>
         </div>
 
         <div class="arena-limit">
@@ -22,7 +22,7 @@
 
         <div class="arena-deck-2">
           <div class="deck-label"><p><%= @deck2.monster.xp %> xp</p><h3><%= @deck2.monster.name %></h3></div>
-          <div class="progress-bar blue stripes"><span class="prog-2" style="width:<%= @deck2.hp %>%"></span></div>
+          <div id="progress2" class="progress-bar blue stripes"><span class="prog-2" style="width:<%= @deck2.hp %>%"></span></div>
         </div>
       </div>
 
@@ -32,12 +32,12 @@
         </div>
 
         <div class="arena-deck-2">
-          <p id="arena-deck-2-monster" class="<%= @deck2.monster.specie.name %> idle"></p>
+          <div id="arena-deck-2-monster" class="<%= @deck2.monster.specie.name %> idle"></div>
         </div>
       </div>
 
-      <div id="arena-attack-1" class="arena-attack"><h3 ><%= @deck1.attack.name %></div>
-      <div id="arena-attack-2" class="arena-attack"><h3 ><%= @deck2.attack.name %></div>
+      <div id="arena-attack-1"><h3 ><%= @deck1.attack.name %></div>
+      <div id="arena-attack-2"><h3 ><%= @deck2.attack.name %></div>
 
     </div>
 
@@ -76,6 +76,7 @@
               <% else %>
                 <h2>Round <%= @battle.round %></h2>
                 <h3>Votre adversaire est en train de jouer !</h3>
+                <p><a class="btn-combats">Aucune action disponible</a></p>
               <% end %>
             </div>
 

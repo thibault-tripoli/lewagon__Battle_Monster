@@ -1,27 +1,28 @@
-<div class="round" data-battle-subscription-target="round">
-  <div id="round-controls">
+  <div class="round" data-battle-subscription-target="round">
 
-    <% if deck1.hp <= 0 %>
+    <div id="round-controls">
 
-      <div class="go-control">
-        <p>Game Over - <%= deck2.user.name %> wins ! (<%= deck2.hp %> hp)</p>
-        <%= simple_form_for(battle) do |f| %>
-          <%= f.input :winner, :as => :hidden, :input_html => { :value => deck2.user_id, :class => 'form-control' } %>
-          <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
-        <% end %>
-      </div>
+      <% if deck1.hp <= 0 %>
 
-    <% elsif deck2.hp <= 0 %>
+        <div class="go-control">
+          <p>Game Over - <%= deck2.user.name %> wins ! (<%= deck2.hp %> hp)</p>
+          <%= simple_form_for(battle) do |f| %>
+            <%= f.input :winner, :as => :hidden, :input_html => { :value => deck2.user_id, :class => 'form-control' } %>
+            <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
+          <% end %>
+        </div>
 
-      <div class="go-control">
-        <p>Game Over - <%= deck1.user.name %> wins ! (<%= deck1.hp %> hp)</p>
-        <%= simple_form_for(battle) do |f| %>
-          <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck1.user_id, :class => 'form-control' } %>
-          <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
-        <% end %>
-      </div>
+      <% elsif deck2.hp <= 0 %>
 
-    <% else %>
+        <div class="go-control">
+          <p>Game Over - <%= deck1.user.name %> wins ! (<%= deck1.hp %> hp)</p>
+          <%= simple_form_for(battle) do |f| %>
+            <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck1.user_id, :class => 'form-control' } %>
+            <%= f.submit 'Retour au menu', :class => 'btn btn-primary' %>
+          <% end %>
+        </div>
+
+      <% else %>
 
         <div class="nx-control">
           <% if current_deck.user == current_user %>
@@ -35,7 +36,8 @@
           <% end %>
         </div>
 
-    <% end %>
+      <% end %>
+
+    </div>
 
   </div>
-</div>
