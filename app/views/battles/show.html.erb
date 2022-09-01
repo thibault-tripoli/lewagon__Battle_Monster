@@ -1,14 +1,18 @@
 <div class="container">
+  <div class="gap"></div>
+  <div class="gap"></div>
   <div class="battle"
     data-controller="battle-subscription"
     data-battle-subscription-deck-id-value="<%= @my_deck.id %>"
   >
     <h1>Combat #<%= @battle.id %></h1>
+    <div class="gap"></div>
 
     <div class="arena">
+
       <div class="arena-info">
         <div class="arena-deck-1">
-          <div class="deck-label"><p><%= @deck1.monster.name %></p><p><%= @deck1.monster.xp %> xp</p></div>
+          <div class="deck-label"><h3><%= @deck1.monster.name %></h3><p><%= @deck1.monster.xp %> xp</p></div>
           <div class="progress-bar blue stripes"><span class="prog-1" style="width:<%= @deck1.hp %>%"></span></div>
         </div>
 
@@ -17,7 +21,7 @@
         </div>
 
         <div class="arena-deck-2">
-          <div class="deck-label"><p><%= @deck2.monster.xp %> xp</p><p><%= @deck2.monster.name %></p></div>
+          <div class="deck-label"><p><%= @deck2.monster.xp %> xp</p><h3><%= @deck2.monster.name %></h3></div>
           <div class="progress-bar blue stripes"><span class="prog-2" style="width:<%= @deck2.hp %>%"></span></div>
         </div>
       </div>
@@ -27,27 +31,20 @@
           <div id="arena-deck-1-monster" class="<%= @deck1.monster.specie.name %> idle"></div>
         </div>
 
-        <div class="arena-attack">
-          <div id="arena-attack-1">
-            <p><%= @deck1.attack.name %></p>
-          </div>
-
-          <div id="arena-attack-2">
-            <p><%= @deck2.attack.name %></p>
-          </div>
-        </div>
-
         <div class="arena-deck-2">
           <p id="arena-deck-2-monster" class="<%= @deck2.monster.specie.name %> idle"></p>
         </div>
       </div>
+
+      <div id="arena-attack-1" class="arena-attack"><h3 ><%= @deck1.attack.name %></div>
+      <div id="arena-attack-2" class="arena-attack"><h3 ><%= @deck2.attack.name %></div>
+
     </div>
 
     <div class="rounds" data-battle-subscription-target="rounds">
       <div class="round" data-battle-subscription-target="round">
 
         <div id="round-controls">
-        <p>----</p>
 
           <% if @deck1.hp <= 0 %>
 
@@ -73,19 +70,22 @@
 
             <div class="nx-control">
               <% if @current_deck.user == current_user %>
-                <p>Round <%= @battle.round %> : <%= @current_deck.user.name %> à toi de jouer > <a data-action="click->battle-subscription#next" href="<%= battle_next_round_path(@battle, @next_deck) %>">Lancer <%= @current_deck.attack.name %> !</a></p>
+                <h2>Round <%= @battle.round %></h2>
+                <h3><%= @current_deck.user.name %> à toi de jouer !</h3>
+                <p><a class="btn-combats" data-action="click->battle-subscription#next" href="<%= battle_next_round_path(@battle, @next_deck) %>">Lancer <%= @current_deck.attack.name %></a></p>
               <% else %>
-                <p>Round <%= @battle.round %> : Votre adversaire est en train de jouer !</p>
+                <h2>Round <%= @battle.round %></h2>
+                <h3>Votre adversaire est en train de jouer !</h3>
               <% end %>
             </div>
 
           <% end %>
 
-        <p>----</p>
         </div>
 
       </div>
     </div>
 
   </div>
+  <div class="gap"></div>
 </div>
