@@ -40,29 +40,29 @@
 
 .position-absolute{
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 100%;
-  left: 50%;
+  // transform: translate(-50%, -50%);
+  top: 0;
+  left: 43%;
   height: 150px;
   width: 200px;
   object-fit: contain;
-  transition: all 0.1s ease-in;
-  // transform: scale(0.8);
-  // animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
-  // infinite alternate;
-  &:hover{
-    height: 200px;
-    width: 210px;
-  }
+  // transition: all 0.1s ease-in;
+  transform: scale(0.8);
+  animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
+  infinite alternate;
+  // &:hover{
+  //   height: 200px;
+  //   width: 210px;
+  // }
   margin: 0 auto;
 }
 
-// @keyframes bopB {
-//   0% {
-//     transform: scale(0.8);
-//   }
-//   80%,
-//   100% {
-//     transform: scale(1) rotateZ(-3deg);
-//   }
-// }
+@keyframes bopB {
+  0% {
+    transform: scale(0.8);
+  }
+  80%,
+  100% {
+    transform: scale(1) rotateZ(-3deg);
+  }
+}
