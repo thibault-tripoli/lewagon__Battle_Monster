@@ -1,18 +1,27 @@
 <body id="home">
-  <%# <div class="container py-5"> %>
+
     <div class="home-container">
+
       <div class="logo-container">
         <img class="logo" src="http://onepage.dropagence.fr/game/place/logo-bm.png" alt="Logo Battle Monster" >
       </div>
 
-      <div class="btn-home">
-        <%= link_to "Connexion", page_main_path  %>
-      </div>
+      <div class="button">
+        <% if !user_signed_in? %>
+          <div class="btn-home">
+            <%= link_to "Connexion", page_main_path  %>
+          </div>
 
-      <div class="btn-home">
-        <%= link_to "Inscription", new_user_registration_path  %>
+          <div class="btn-home">
+            <%= link_to "Inscription", new_user_registration_path  %>
+          </div>
+        <% else %>
+          <div class="btn-home">
+            <%= link_to "Menu principal", page_main_path %>
+          </div>
+        <% end %>
       </div>
 
     </div>
-  <%# </div> %>
+
 </body>
