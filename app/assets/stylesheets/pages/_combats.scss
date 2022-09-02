@@ -19,6 +19,19 @@
   border-radius: 5px;
   padding: 80px 120px;
 }
+.arena-limit p {
+  font-size: 30px;
+}
+
+.deck-label p,
+.deck-label h3,
+#round-controls h2,
+#round-controls h3,
+.battle h1,
+.arena-limit p {
+  font-family: teko;
+  color: white;
+}
 
 .go-control p {
   padding: 10px 0;
@@ -379,4 +392,11 @@
   background: url("http://onepage.dropagence.fr/game/anim/garou-die.png");
   background-size: cover;
   background-position: -5500px;
+}
+
+#bodycombat {
+  width:100%;
+  height:100%;
+  background: url("https://zupimages.net/up/22/35/1fr9.png") center no-repeat;
+  background-size: cover;
 }
