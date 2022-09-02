@@ -15,17 +15,19 @@ Deck.destroy_all
 Battle.destroy_all
 
 puts "creation de personnage..."
-#base_url = 'https://cloudinary.com/console/c-346c3bd548b428e163df3dca628643/media_library/folders/home'
+base_url = 'http://onepage.dropagence.fr/game/place'
 
-#player1_avatar_url = URI.open("#{base_url}/defaut_avatar.png")
-#player2_avatar_url = URI.open("#{base_url}/defaut_avatar.png")
+player1_avatar_url = URI.open("#{base_url}/ilyes.jpg")
+player2_avatar_url = URI.open("#{base_url}/tarek.jpg")
 
-player_one = User.create!(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0)
-player_two = User.create!(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0)
+player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0)
+player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0)
 
-#player_one.avatar.attach!(io: player1_avatar_url, filename: 'defaut_avatar.png', content_type: 'image/png')
-#player_two.avatar.attach!(io: player2_avatar_url, filename: 'defaut_avatar.png', content_type: 'image/png')
+player_one.avatar.attach(io: player1_avatar_url, filename: 'tarek_avatar.png', content_type: 'image/png')
+player_two.avatar.attach(io: player2_avatar_url, filename: 'ilyes_avatar.png', content_type: 'image/png')
 
+player_one.save!
+player_two.save!
 
 puts "creation du bestiaire"
 
@@ -36,8 +38,8 @@ attack_one = Attack.create!(damage: 50, name: "jet de pierres", specie_id: speci
 attack_two = Attack.create!(damage: 50, name: "griffure sanglante", specie_id: specie_two.id)
 
 puts "creation des stars du jeu..."
-monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id, xp: 0)
-monster_two =Monster.create!(name: "Toktok", user_id: player_two.id, specie_id: specie_two.id, xp: 0)
+monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id, xp: 100)
+monster_two =Monster.create!(name: "Toktok", user_id: player_two.id, specie_id: specie_two.id, xp: 100)
 
 puts "creation d'une battle + 2 decks"
 battle = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
