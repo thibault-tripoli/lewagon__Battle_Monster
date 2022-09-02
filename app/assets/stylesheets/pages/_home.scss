@@ -72,3 +72,51 @@
     transform: scale(1) rotateZ(-3deg);
   }
 }
+
+.home-container {
+  position:relative;
+}
+
+.personnage-home-walk {
+  position: absolute;
+  top:10px;
+  bottom: 0;
+  left:1700px;
+  right:0;
+  width: 600px;
+  height: 600px;
+  margin-left: 20px;
+  background: url('https://zupimages.net/up/22/35/b2hj.png') right;
+  animation: play 1s steps(10) infinite, avance 8s linear;
+}
+@keyframes play {
+  from { background-position: 0px;}
+  to   { background-position: -6000px;}
+}
+
+@keyframes avance {
+  from { transform: translate(280px, 0);  }
+  to   { transform: translate(-2800px, 0); }
+}
+
+.personnage2-home-walk {
+  position: absolute;
+  top:40px;
+  bottom: 0;
+  left:2000px;
+  right:0;
+  width: 600px;
+  height: 600px;
+  margin-left: 20px;
+  background: url('https://www.zupimages.net/up/22/34/txnl.png') right;
+  animation: play 1s steps(10) infinite, avance 8s linear;
+}
+@keyframes play {
+  from { background-position: 0px;}
+  to   { background-position: -6000px;}
+}
+
+@keyframes avance {
+  from { transform: translate(280px, 0);  }
+  to   { transform: translate(-3100px, 0); }
+}
