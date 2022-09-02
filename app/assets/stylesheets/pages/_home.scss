@@ -21,13 +21,12 @@
     line-height: 0px;
   }
 
-  a {
+  #home a {
     color:white;
     font-size: 40px;
     font-family: 'Teko', sans-serif;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
     text-decoration: none;
-
   }
 
   .btn-home:hover {
@@ -44,19 +43,19 @@
     transition: ease 1s;
   }
 
-  .logo-container {
+  #home .logo-container {
     text-align: center;
     width: 60%;
     height: 60%;
     margin: 0 auto;
   }
 
-  .logo {
+  #home .logo {
     width: 70%;
     width: 70%;
    }
 
-  .logo {
+   #home .logo {
     transform: scale(0.8);
     animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
     infinite alternate;

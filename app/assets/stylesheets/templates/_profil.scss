@@ -15,37 +15,19 @@
   margin-left: 50px;
 }
 
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Teko', sans-serif;
   font-weight: bold;
-  padding-left: 20px;
-  font-weight: bold;
   color: #499A90;
-
 }
 
 h1 {
   font-size:54px;
-  font-family: 'Teko', sans-serif;
-  font-weight: bold;
-  color: #499A90;
 }
 
-input {
-  font-family: 'Teko', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.btn {
+.btn, label, input {
   font-family: 'Teko', sans-serif;
   font-size: 22px;
-}
-
-label {
-  font-family: 'Teko', sans-serif;
-  font-size: 22px;
-
 }
 
 p {
@@ -53,19 +35,9 @@ p {
   font-size:18px;
 }
 
-a {
-  font-family: 'Teko', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-}
-
 .gap {
   display: block;
-  padding: 20px;
-}
-
-.card{
-  cursor: pointer;
+  padding: 30px;
 }
 
 #voir-monstre a{
@@ -91,7 +63,4 @@ a {
 #voir-monstre:hover:after{
   transform: scaleX(1);
   transform-origin: bottom left;
-}
-body{
-  height: 120vh;
 }
