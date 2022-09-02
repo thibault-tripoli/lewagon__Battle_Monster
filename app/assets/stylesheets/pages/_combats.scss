@@ -138,6 +138,18 @@
   to { top: 70vh }
 }
 
+.btn-combats {
+  background-color: #499A90;
+  border-color: white;
+  color: white;
+}
+
+.btn-combats:hover {
+  background-color: white;
+  border-color: #499A90;
+  color: #499A90;
+}
+
 ////// Golem
 .golem.idle {
   height: 500px;
