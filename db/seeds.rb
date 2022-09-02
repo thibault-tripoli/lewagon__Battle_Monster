@@ -20,7 +20,7 @@ puts "creation de personnage..."
 #player1_avatar_url = URI.open("#{base_url}/defaut_avatar.png")
 #player2_avatar_url = URI.open("#{base_url}/defaut_avatar.png")
 
-player_one = User.create!(email: "thibault@battle.com", password: "123456", name: "Thibault", pc: 0)
+player_one = User.create!(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0)
 player_two = User.create!(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0)
 
 #player_one.avatar.attach!(io: player1_avatar_url, filename: 'defaut_avatar.png', content_type: 'image/png')
@@ -32,12 +32,12 @@ puts "creation du bestiaire"
 specie_one = Specie.create!(name: "golem")
 specie_two = Specie.create!(name: "garou")
 
-attack_one = Attack.create!(damage: 25, name: "griffure sanglante", specie_id: specie_one.id)
-attack_two = Attack.create!(damage: 25, name: "jets de pierres", specie_id: specie_two.id)
+attack_one = Attack.create!(damage: 50, name: "jets de pierres", specie_id: specie_one.id)
+attack_two = Attack.create!(damage: 50, name: "griffure sanglante", specie_id: specie_two.id)
 
 puts "creation des stars du jeu..."
-monster_one = Monster.create!(name: "billy crawford", user_id: player_one.id, specie_id: specie_one.id, xp: 0)
-monster_two =Monster.create!(name: "durdur", user_id: player_two.id, specie_id: specie_two.id, xp: 0)
+monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id, xp: 0)
+monster_two =Monster.create!(name: "Croc Noir", user_id: player_two.id, specie_id: specie_two.id, xp: 0)
 
 puts "creation d'une battle + 2 decks"
 battle = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
