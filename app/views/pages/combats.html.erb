@@ -1,31 +1,29 @@
-<div class="container py-5">
-  <div class="menu-container">
-    <div class="container-left">
-      <div class="monster-left-top">
-        <img src="https://zupimages.net/up/22/35/hi7i.png" alt="Golem" width="483px" height="700px">
-      </div>
+<div class="main-container" style="background-image: url('http://onepage.dropagence.fr/game/place/background-1.png');">
+  <div class="container-left">
+    <div class="monster-left-top">
+      <img src="https://zupimages.net/up/22/35/hi7i.png" alt="Golem" width="483px" height="700px">
     </div>
-    <div class="container-middle">
-      <div class="btn-menu">
-        <p class="menu-name">
-          <%= link_to "1 VERSUS 1", page_fake_path  %>
-        </p>
-      </div>
-      <div class="btn-menu">
-        <p class="menu-name">
-          <%= link_to "1 VERSUS BOT", "x" %>
-        </p>
-      </div>
-       <div class="btn-menu">
-        <p class="menu-name">
-          <%= link_to "RETOUR", page_main_path %>
-        </p>
-      </div>
+  </div>
+  <div class="main-content">
+    <div class="btn-menu">
+      <p class="menu-name">
+        <%= link_to "1 VERSUS 1", match_path  %>
+      </p>
     </div>
-    <div class="container-right">
-      <div class="monster-right-top">
-          <img src="https://zupimages.net/up/22/35/cxbd.png" alt="Golem" width="483px" height="700px">
-      </div>
+    <div class="btn-menu">
+      <p class="menu-name">
+        <%= link_to "1 VERSUS BOT", "#" %>
+      </p>
+    </div>
+    <div class="btn-menu">
+      <p class="menu-name">
+        <%= link_to "RETOUR", page_main_path %>
+      </p>
+    </div>
+  </div>
+  <div class="container-right">
+    <div class="monster-right-top">
+        <img src="https://zupimages.net/up/22/35/cxbd.png" alt="Golem" width="483px" height="700px">
     </div>
   </div>
 </div>
