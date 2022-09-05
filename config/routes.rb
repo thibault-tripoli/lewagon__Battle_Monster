@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get '/users/sign_out' => 'devise/sessions#destroy'
-  get "/users/sign_up", to: "devise/registrations#new"
   root to: "pages#home"
 
   # Battles
@@ -22,21 +20,13 @@ Rails.application.routes.draw do
   get "page/start_tutoriel", to: 'pages#start_tutoriel'
   get "page/combats", to: "pages#combats"
   get "page/fake", to: "pages#fake"
-  get "/users/sign_up", to: "devise/registrations#new"
 
   # Pages : Profil
   get 'profil/:id', to: 'pages#profil', as: :profil
   get 'profil/:id/edit', to: 'pages#edit'
 
   # Templates
-  get 'templates/home'
-  get 'templates/menu'
-  get 'templates/profil'
-  get 'templates/fake'
-  get 'templates/combats'
-  get 'templates/campagnes'
-  get 'templates/monsterplace'
-  get 'templates/monsterdex'
-  get 'templates/inscription'
-
+  get 'templates/container'
+  get 'templates/main'
+  get 'templates/master'
 end
