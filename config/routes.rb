@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     get 'next_round/:id', to: 'battles#next_round', as: :next_round
     get "setup", to: 'battles#setup', as: :setup
     get "loading", to: 'battles#loading', as: :loading
-  end
+      #connection
+    end
   get "match", to: 'battles#match', as: :match
+  get 'connect', to: 'battles#connect'
 
   # Monsters
   resources :monsters, only: :create
@@ -29,4 +31,6 @@ Rails.application.routes.draw do
   get 'templates/container'
   get 'templates/main'
   get 'templates/master'
+
+
 end

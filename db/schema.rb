@@ -120,7 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_100602) do
     t.string "avatar", default: "https://onepage.dropagence.fr/game/bm/img/static/ugly/brou.png"
     t.integer "pc", default: 0
     t.boolean "onboard", default: false
-    t.string "lived"
+    t.datetime "lived"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

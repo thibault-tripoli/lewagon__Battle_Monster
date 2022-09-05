@@ -80,6 +80,11 @@ class BattlesController < ApplicationController
     end
   end
 
+  def connect
+    @users = User.where(lived: 5.seconds.ago..)
+    current_user.update(lived: Time.now)
+  end
+
   private
 
   def select_deck
@@ -97,15 +102,4 @@ class BattlesController < ApplicationController
   def game_over
     params.require(:battle).permit(:winner_id)
   end
-
-  def connect
-    @user = User.find(params[:id])
-    @user.lived = Time.now
-    @user.save
-  end
-
-  def list_user
-    User.where(lived: 5.seconds.ago..)
-  end
-
 end
