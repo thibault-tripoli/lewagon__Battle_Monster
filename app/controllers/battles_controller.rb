@@ -11,22 +11,17 @@ class BattlesController < ApplicationController
   end
 
   def setup
-    # j'instancie le deck
-    # je valide
-  end
-
-  def setup_create
-    # j'enregistre le setup
-    # je redirige vers loading
+    @battle = Battle.find(params[:battle_id])
+    @setup_deck = @battle.decks.where(user_id: current_user).first
+    @setup_deck.monster = current_user.monsters.first
+    @setup_deck.save
+    @setup_specie = @setup_deck.monster.specie
   end
 
   def loading
-    # dès que battle a deux decks (Check avec Action Cable) => je lance le toas
-    #-> @battle = Battle.find(params[:id])
-    #-> @battle.current_deck = @battle.decks.sample
-    #-> @battle.save!
-    # je lance un timer (10s)
-    # time out => je redirige vers la show
+    @battle = Battle.find(params[:battle_id])
+    @battle.current_deck = @battle.decks.sample
+    @battle.save
   end
 
   def show

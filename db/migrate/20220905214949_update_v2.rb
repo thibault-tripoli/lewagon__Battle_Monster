@@ -1,13 +1,13 @@
-class AddChangesToV2 < ActiveRecord::Migration[7.0]
+class UpdateV2 < ActiveRecord::Migration[7.0]
   def change
     add_column :species, :monster_skin, :string
     add_column :species, :monster_head, :string
     add_column :species, :info, :string
 
     remove_foreign_key :decks, :attacks
-    add_reference :decks, :attack1, foreign_key: { to_table: :decks }
-    add_reference :decks, :attack2, foreign_key: { to_table: :decks }
-    add_reference :decks, :attack3, foreign_key: { to_table: :decks }
+    add_reference :decks, :attack_one, index: true
+    add_reference :decks, :attack_two, index: true
+    add_reference :decks, :attack_three, index: true
     change_column :decks, :hp, :integer, default: 100
     add_column :decks, :empty, :boolean, default: true
 
@@ -22,6 +22,5 @@ class AddChangesToV2 < ActiveRecord::Migration[7.0]
 
     change_column :battles, :status, :string, default: "pending"
     change_column :monsters, :xp, :integer, default: 0
-
   end
 end
