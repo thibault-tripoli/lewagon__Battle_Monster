@@ -67,4 +67,10 @@ _deck2 = Deck.create!(user: player_two, monster: monster_two, attack: attack_two
 battle.current_deck = deck1
 battle.save!
 
+puts "creation d'une 2eme battle + 2 decks"
+battle2 = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
+Deck.create!(user: player_one, monster: monster_one, attack: attack_one, battle: battle2)
+Deck.create!(user: player_two, monster: monster_two, attack: attack_two, battle: battle2)
+battle.save!
+
 puts "Tout a été créé avec succès !"
