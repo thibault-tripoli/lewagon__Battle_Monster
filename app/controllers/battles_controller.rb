@@ -97,4 +97,15 @@ class BattlesController < ApplicationController
   def game_over
     params.require(:battle).permit(:winner_id)
   end
+
+  def connect
+    @user = User.find(params[:id])
+    @user.lived = Time.now
+    @user.save
+  end
+
+  def list_user
+    User.where(lived: 5.seconds.ago..)
+  end
+
 end
