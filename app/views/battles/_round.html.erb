@@ -69,15 +69,15 @@
           <div class="current">
             <h2>Round <%= battle.round %></h2>
             <h3><%= current_deck.user.name %> à toi de jouer</h3>
-            <p><a class="btn btn-combats" data-action="click->battle-subscription#one" href="<%= battle_next_round_path(battle, next_deck) %>"><%= current_deck.attack_one.name %></a></p>
-            <p><a class="btn btn-combats" data-action="click->battle-subscription#two" href="<%= battle_next_round_path(battle, next_deck) %>"><%= current_deck.attack_two.name %></a></p>
-            <p><a class="btn btn-combats" data-action="click->battle-subscription#three" href="<%= battle_next_round_path(battle, next_deck) %>"><%= current_deck.attack_three.name %></a></p>
+            <a data-action="click->battle-subscription#one" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_one.id %>"/></div></a>
+            <a data-action="click->battle-subscription#two" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_two.id %>"/></div></a>
+            <a data-action="click->battle-subscription#three" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_three.id %>"/></div></a>
           </div>
         <% else %>
           <div class="next">
             <h2>Round <%= battle.round %></h2>
             <h3>Votre adversaire est en train de jouer</h3>
-            <p><a class="btn btn-combats">Aucune action disponible</a></p>
+            <p>Aucune action disponible</p>
           </div>
         <% end %>
       </div>

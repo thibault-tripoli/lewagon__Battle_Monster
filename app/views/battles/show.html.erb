@@ -1,6 +1,5 @@
-<div id="bodycombat">
-  <div class="container">
-    <div class="gap"></div>
+<div id="body-combats">
+  <div id="container-combats" class="container">
     <div class="battle"
       data-controller="battle-subscription"
       data-battle-subscription-deck-id-value="<%= @my_deck.id %>"
@@ -30,11 +29,11 @@
 
         <div class="arena-deck current-deck-<%= @current_deck.user_id %>">
           <div class="arena-deck-1">
-            <div id="arena-deck-1-monster" class="<%= @deck1.monster.specie.name %> idle"></div>
+            <div id="arena-deck-1-monster" class="<%= @deck1.monster.specie.name %> left idle"></div>
           </div>
 
           <div class="arena-deck-2">
-            <div id="arena-deck-2-monster" class="<%= @deck2.monster.specie.name %> idle"></div>
+            <div id="arena-deck-2-monster" class="<%= @deck2.monster.specie.name %> right idle"></div>
           </div>
         </div>
 
