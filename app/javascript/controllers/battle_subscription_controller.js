@@ -19,8 +19,10 @@ export default class extends Controller {
           const arenaAttack2 = document.querySelector('#arena-attack-2')
           arenaAttack1.style.visibility="visible";
           arenaAttack2.style.visibility="visible";
-          arenaAttack1.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
-          arenaAttack2.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
+          arenaAttack1.style.background = "url('https://onepage.dropagence.fr/game/bm/img/static/attack/" + json.current_attack.id + "')";
+          arenaAttack2.style.background = "url('https://onepage.dropagence.fr/game/bm/img/static/attack/" + json.current_attack.id + "')";
+          // arenaAttack1.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
+          // arenaAttack2.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
 
           if (json.deckID == this.deck1IdValue) {
             console.log(json.current_attack)

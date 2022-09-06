@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_05_214949) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_114539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_214949) do
     t.integer "success"
     t.string "attack_btn"
     t.string "attack_skin"
+    t.integer "image_num"
     t.index ["specie_id"], name: "index_attacks_on_specie_id"
   end
 
