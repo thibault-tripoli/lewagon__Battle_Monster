@@ -37,6 +37,9 @@ class BattlesController < ApplicationController
     @battle = Battle.find(params[:id])
     @current_deck = @battle.current_deck
     select_deck
+    redirect_to battle_setup_path(@battle, @my_deck) if @my_deck.empty
+    @battle.status = "started" if @battle.status == "pending"
+    @battle.save
   end
 
   def next_round
@@ -83,9 +86,16 @@ class BattlesController < ApplicationController
   def update
     @battle = Battle.find(params[:id])
     @battle.update(game_over)
-    @battle.status = "finish"
-    if @battle.save!
-      redirect_to page_main_path
+    @battle.status = "finished"
+    winner = User.find(@battle.winner_id)
+    winner_monster = winner.monsters.first
+    winner.pc = @battle.pc_win
+    winner_monster.xp = @battle.xp_win
+
+    if @battle.save
+      winner.save
+      winner_monster.save
+      redirect_to profil_path(current_user)
     else
       render :show, status: :unprocessable_entity
     end

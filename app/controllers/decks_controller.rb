@@ -6,7 +6,7 @@ class DecksController < ApplicationController
     if @deck.attack_one && @deck.attack_two && @deck.attack_three && @deck.save
       redirect_to battle_loading_path(@deck.battle)
     else
-      redirect_to battle_setup_path(@deck)
+      redirect_to battle_setup_path(@battle, @deck)
     end
   end
 
