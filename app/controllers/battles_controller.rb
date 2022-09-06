@@ -81,8 +81,26 @@ class BattlesController < ApplicationController
   end
 
   def connect
+    # @users = User.where(lived: 5.seconds.ago..)
+    # current_user.update(lived: Time.now)
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @users}
+    # end
     @users = User.where(lived: 5.seconds.ago..)
     current_user.update(lived: Time.now)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          html: render_to_string(partial: "users", locals: {users: @users}, formats: [:html] )
+        }
+      end
+    end
+  end
+
+  def users_connected
+
   end
 
   private

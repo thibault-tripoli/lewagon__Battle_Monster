@@ -1,14 +1,19 @@
-connect
+<%# connect
 #creation d'une nouvelle route et action
 qui liste tout les users
 et cette page et interogger tout les secondes
-methode fecth vers users.lived
+methode fecth vers users.lived %>
 
-<% @users.each do |user| %>
-<%= user %>
-<% end %>
+<div data-controller="insert-in-list">
+  <div data-insert-in-list-target="items">
+    <div class="w-50 h-50" style="background-color: red;" data-action="click->insert-in-list#update_user">
+    <p>User1</p>
+    <%= render "users", users: @users %>
+    </div>
+  </div>
+</div>
 
-
+<%#
 # creation controlleur
 # interogger tout les second en consol log
-# remplacer le log par le fetch vers la meme url
+# remplacer le log par le fetch vers la meme url %>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   get "match", to: 'battles#match', as: :match
   get 'connect', to: 'battles#connect'
+  get 'users_connected', to: 'battles#users_connected'
 
   # Monsters
   resources :monsters, only: :create
