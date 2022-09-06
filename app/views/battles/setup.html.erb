@@ -4,8 +4,7 @@
 
 <div>
   <h1>Préparez votre Deck pour la bataille #<%= @battle.id %></h1>
-  <p>Votre deck possède déjà l'attaque <%= @setup_deck.attack.name %><br>
-  Vous allez désormais en sélectionner de nouvelles...</p>
+  <p> choisis ton attaque </p>
 </div>
 
 <%= simple_form_for [@battle, @setup_deck] do |f| %>

@@ -17,7 +17,6 @@ class BattlesController < ApplicationController
     @deck_1.user = current_user
     @deck_1.monster_id = current_user.monsters.first.id
 
-    @deck_1.attack_id = @deck_1.monster_id
 
     @deck_1.battle_id = @battle.id
     @deck_1.save!
@@ -26,10 +25,11 @@ class BattlesController < ApplicationController
     @deck_2.user_id = @user_2.id
 
     @deck_2.monster_id = @user_2.monsters.first.id
-    @deck_2.attack1_id = @deck_2.monster_id
     @deck_2.battle_id = @battle.id
     @deck_2.save!
-    redirect_to setup
+    @battle.current_deck = @deck_1
+    @battle.save!
+    redirect_to connect_path
   end
 
   def setup
@@ -125,20 +125,25 @@ class BattlesController < ApplicationController
     #   format.html
     #   format.json { render json: @users}
     # end
+    @pending_deck = current_user.decks.joins(:battle).where(battles: {status: "pending"}).last
+
     current_user.update(lived: Time.now)
-    @users = User.where(lived: 5.seconds.ago..).where.not(id: current_user.id)
+    @users = User.where(lived: 10.seconds.ago..).where.not(id: current_user.id)
     respond_to do |format|
       format.html
       format.json do
         render json: {
-          html: render_to_string(partial: "users", locals: {users: @users}, formats: [:html] )
+          html: render_to_string(partial: "users", locals: {users: @users, pending_deck: @pending_deck}, formats: [:html] )
         }
       end
     end
   end
 
-  def users_connected
-
+  def accept
+    @battle = Battle.find(params[:battle_id])
+    @battle.status = "pending"
+    @battle.save
+    redirect_to   battle_setup_path(@battle.id)
   end
 
   private

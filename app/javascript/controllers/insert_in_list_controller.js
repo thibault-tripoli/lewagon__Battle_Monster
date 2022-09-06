@@ -10,9 +10,11 @@ export default class extends Controller {
   }
 
   update_user =()=> {
+    console.log("ici");
     fetch("/connect", { headers: {accept: "application/json"}})
     .then(response => response.json())
     .then((data) => {
+      console.log("connect");
       this.itemsTarget.innerHTML = data.html;
     })
   }
