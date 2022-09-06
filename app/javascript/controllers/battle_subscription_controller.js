@@ -150,7 +150,8 @@ export default class extends Controller {
 
   next(e, attack) {
     e.preventDefault();
-    fetch(e.target.href + '?attack=' + attack, {headers: {"Accept": "text/html"}})
+    console.log(e)
+    fetch(e.target.parentElement.parentElement.href + '?attack=' + attack, {headers: {"Accept": "text/html"}})
       .then(response => response.text())
       .then((data) => {
         // console.log('data2', data)
