@@ -13,8 +13,6 @@
   <div id="main-container" class="monster-block">
     <div id="main-container-items">
       <div id="main-content">
-        <%= simple_form_for @user do |f| %>
-
         <style>
                 img {
                 max-width: 100%;
@@ -100,10 +98,9 @@
       </div>
     <div id="main-controls">
         <div></div>
-
-        <div class="large-btn"><%= f.submit %>Finir le tutoriel</div>
+        <div class="large-btn"><%=link_to "Finir le tutoriel", page_main_path %></div>
     </div>
     </div>
   </div>
-      <% end %>
+
 </main>
