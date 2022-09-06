@@ -1,13 +1,12 @@
 class DecksController < ApplicationController
   def update
-    @setup_deck = Deck.find(params[:id])
-    @setup_deck.update(setup_params)
-    @setup_deck.empty = false
-    if @setup_deck.save
-      redirect_to battle_loading_path(@setup_deck.battle)
+    @deck = Deck.find(params[:id])
+    @deck.update(setup_params)
+    @deck.empty = false
+    if @deck.attack_one && @deck.attack_two && @deck.attack_three && @deck.save
+      redirect_to battle_loading_path(@deck.battle)
     else
-      # ?
-      render battle_setup_path(@setup_deck), status: :unprocessable_entity
+      redirect_to battle_setup_path(@deck)
     end
   end
 

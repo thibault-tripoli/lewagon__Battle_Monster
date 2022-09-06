@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static values = { deckId: Number }
+  static values = { deckId: Number, deck1Id: Number, deck2Id: Number }
   static targets = ["round", "rounds"]
 
   connect() {
@@ -19,9 +19,11 @@ export default class extends Controller {
           const arenaAttack2 = document.querySelector('#arena-attack-2')
           arenaAttack1.style.visibility="visible";
           arenaAttack2.style.visibility="visible";
+          arenaAttack1.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
+          arenaAttack2.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
 
-          if (json.attack == 1) {
-
+          if (json.deckID == this.deck1IdValue) {
+            console.log(json.current_attack)
             // start
             monster1.classList.add('attack')
             roundControl.classList.add('controls-off')
@@ -58,8 +60,8 @@ export default class extends Controller {
               }
             });
 
-          } else if (json.attack == 2) {
-
+          } else if (json.deckID == this.deck2IdValue) {
+            console.log(json.current_attack)
             monster2.classList.add('attack')
             roundControl.classList.add('controls-off')
             // cascade
@@ -101,13 +103,18 @@ export default class extends Controller {
     )
   }
 
-  next(e) {
+  next(e, attack) {
     e.preventDefault();
-    fetch(e.target.href, {headers: {"Accept": "text/html"}})
+    fetch(e.target.href + '?attack=' + attack, {headers: {"Accept": "text/html"}})
       .then(response => response.text())
       .then((data) => {
         // console.log('data2', data)
-      })
+      }
+    )
   }
+
+  one(e) { this.next(e, 'one') }
+  two(e) { this.next(e, 'two') }
+  three(e) { this.next(e, 'three') }
 
 }

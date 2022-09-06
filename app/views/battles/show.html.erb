@@ -4,6 +4,8 @@
     <div class="battle"
       data-controller="battle-subscription"
       data-battle-subscription-deck-id-value="<%= @my_deck.id %>"
+      data-battle-subscription-deck1-id-value="<%= @deck1.id %>"
+      data-battle-subscription-deck2-id-value="<%= @deck2.id %>"
     >
       <h1>Combat #<%= @battle.id %></h1>
       <div class="gap"></div>
@@ -36,8 +38,8 @@
           </div>
         </div>
 
-        <div id="arena-attack-1"><h3 ><%= @deck1.attack.name %></div>
-        <div id="arena-attack-2"><h3 ><%= @deck2.attack.name %></div>
+        <div id="arena-attack-1"></div>
+        <div id="arena-attack-2"></div>
 
       </div>
 
@@ -113,7 +115,9 @@
                   <div class="current">
                     <h2>Round <%= @battle.round %></h2>
                     <h3><%= @current_deck.user.name %> à toi de jouer</h3>
-                    <p><a class="btn btn-combats" data-action="click->battle-subscription#next" href="<%= battle_next_round_path(@battle, @next_deck) %>">Lancer <%= @current_deck.attack.name %></a></p>
+                    <p><a class="btn btn-combats" data-action="click->battle-subscription#one" href="<%= battle_next_round_path(@battle, @next_deck) %>"><%= @current_deck.attack_one.name %></a></p>
+                    <p><a class="btn btn-combats" data-action="click->battle-subscription#two" href="<%= battle_next_round_path(@battle, @next_deck) %>"><%= @current_deck.attack_two.name %></a></p>
+                    <p><a class="btn btn-combats" data-action="click->battle-subscription#three" href="<%= battle_next_round_path(@battle, @next_deck) %>"><%= @current_deck.attack_three.name %></a></p>
                   </div>
                 <% else %>
                   <div class="next">
@@ -132,7 +136,5 @@
       </div>
 
     </div>
-    <div class="gap"></div>
-    <div class="gap"></div>
   </div>
 </div>
