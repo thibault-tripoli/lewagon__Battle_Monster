@@ -89,8 +89,8 @@ class BattlesController < ApplicationController
     @battle.status = "finished"
     winner = User.find(@battle.winner_id)
     winner_monster = winner.monsters.first
-    winner.pc = @battle.pc_win
-    winner_monster.xp = @battle.xp_win
+    winner.pc += @battle.pc_win
+    winner_monster.xp += @battle.xp_win
 
     if @battle.save
       winner.save
