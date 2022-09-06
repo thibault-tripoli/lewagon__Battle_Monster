@@ -8,6 +8,28 @@ class BattlesController < ApplicationController
   def create
     # j'enregistre la battle
     # je redirige vers setup
+    @battle = Battle.new
+    @battle.pc_win = 10
+    @battle.xp_win = 20
+    @battle.status = "waiting"
+    @battle.save!
+    @deck_1 = Deck.new
+    @deck_1.user = current_user
+    @deck_1.monster_id = current_user.monsters.first.id
+
+
+    @deck_1.battle_id = @battle.id
+    @deck_1.save!
+    @user_2 = User.find(params[:battle][:user_id])
+    @deck_2 = Deck.new
+    @deck_2.user_id = @user_2.id
+
+    @deck_2.monster_id = @user_2.monsters.first.id
+    @deck_2.battle_id = @battle.id
+    @deck_2.save!
+    @battle.current_deck = @deck_1
+    @battle.save!
+    redirect_to connect_path
   end
 
   def setup
@@ -16,6 +38,11 @@ class BattlesController < ApplicationController
     @setup_deck.monster = current_user.monsters.first
     @setup_deck.save
     @setup_specie = @setup_deck.monster.specie
+  end
+
+  def setup_create
+    # j'enregistre le setup
+    # je redirige vers loading
   end
 
   def loading
@@ -91,6 +118,34 @@ class BattlesController < ApplicationController
     end
   end
 
+  def connect
+    # @users = User.where(lived: 5.seconds.ago..)
+    # current_user.update(lived: Time.now)
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @users}
+    # end
+    @pending_deck = current_user.decks.joins(:battle).where(battles: {status: "pending"}).last
+
+    current_user.update(lived: Time.now)
+    @users = User.where(lived: 10.seconds.ago..).where.not(id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          html: render_to_string(partial: "users", locals: {users: @users, pending_deck: @pending_deck}, formats: [:html] )
+        }
+      end
+    end
+  end
+
+  def accept
+    @battle = Battle.find(params[:battle_id])
+    @battle.status = "pending"
+    @battle.save
+    redirect_to   battle_setup_path(@battle.id)
+  end
+
   private
 
   def select_deck
@@ -120,4 +175,5 @@ class BattlesController < ApplicationController
   def game_over
     params.require(:battle).permit(:winner_id)
   end
+
 end
