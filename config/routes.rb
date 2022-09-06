@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   # Battles
-  resources :decks, only: [:update]
   resources :battles, only: %i[show create update] do
     get 'next_round/:id', to: 'battles#next_round', as: :next_round
     get "setup", to: 'battles#setup', as: :setup
+    resources :decks, only: [:update]
     get "loading", to: 'battles#loading', as: :loading
   end
   get "match", to: 'battles#match', as: :match

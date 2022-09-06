@@ -1,0 +1,2 @@
+class Loadingroom < ApplicationRecord
+end

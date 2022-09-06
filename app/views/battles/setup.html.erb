@@ -8,7 +8,7 @@
   Vous allez désormais en sélectionner de nouvelles...</p>
 </div>
 
-<%= simple_form_for @setup_deck do |f| %>
+<%= simple_form_for [@battle, @setup_deck] do |f| %>
   <%= f.association :attack_one, collection: @setup_specie.attacks, label: "choisis l'attaque 1", include_blank: :empty %>
   <%= f.association :attack_two, collection: @setup_specie.attacks, label: "choisis l'attaque 2", include_blank: :empty %>
   <%= f.association :attack_three, collection: @setup_specie.attacks, label: "choisis l'attaque 3", include_blank: :empty %>

@@ -6,7 +6,8 @@ class DecksController < ApplicationController
     if @setup_deck.save
       redirect_to battle_loading_path(@setup_deck.battle)
     else
-      render :show, status: :unprocessable_entity
+      # ?
+      render battle_setup_path(@setup_deck), status: :unprocessable_entity
     end
   end
 

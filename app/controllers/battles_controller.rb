@@ -20,8 +20,17 @@ class BattlesController < ApplicationController
 
   def loading
     @battle = Battle.find(params[:battle_id])
-    @battle.current_deck = @battle.decks.sample
+    @battle.current_deck = @battle.decks.first
     @battle.save
+    select_deck
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          html: render_to_string(partial: 'load', locals: { battle: @battle, deck1: @deck1, deck2: @deck2 }, formats: [:html])
+        }
+      end
+    end
   end
 
   def show
