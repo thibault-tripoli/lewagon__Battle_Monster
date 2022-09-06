@@ -8,6 +8,28 @@ class BattlesController < ApplicationController
   def create
     # j'enregistre la battle
     # je redirige vers setup
+    @battle = Battle.new
+    @battle.pc_win = 10
+    @battle.xp_win = 20
+    @battle.status = "waiting"
+    @battle.save!
+    @deck_1 = Deck.new
+    @deck_1.user = current_user
+    @deck_1.monster_id = current_user.monsters.first.id
+
+    @deck_1.attack_id = @deck_1.monster_id
+
+    @deck_1.battle_id = @battle.id
+    @deck_1.save!
+    @user_2 = User.find(params[:battle][:user_id])
+    @deck_2 = Deck.new
+    @deck_2.user_id = @user_2.id
+
+    @deck_2.monster_id = @user_2.monsters.first.id
+    @deck_2.attack1_id = @deck_2.monster_id
+    @deck_2.battle_id = @battle.id
+    @deck_2.save!
+    redirect_to setup
   end
 
   def setup
@@ -16,6 +38,11 @@ class BattlesController < ApplicationController
     @setup_deck.monster = current_user.monsters.first
     @setup_deck.save
     @setup_specie = @setup_deck.monster.specie
+  end
+
+  def setup_create
+    # j'enregistre le setup
+    # je redirige vers loading
   end
 
   def loading
@@ -98,8 +125,8 @@ class BattlesController < ApplicationController
     #   format.html
     #   format.json { render json: @users}
     # end
-    @users = User.where(lived: 5.seconds.ago..)
     current_user.update(lived: Time.now)
+    @users = User.where(lived: 5.seconds.ago..).where.not(id: current_user.id)
     respond_to do |format|
       format.html
       format.json do
@@ -143,4 +170,5 @@ class BattlesController < ApplicationController
   def game_over
     params.require(:battle).permit(:winner_id)
   end
+
 end

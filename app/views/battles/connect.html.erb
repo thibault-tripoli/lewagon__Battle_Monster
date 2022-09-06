@@ -6,10 +6,7 @@ methode fecth vers users.lived %>
 
 <div data-controller="insert-in-list">
   <div data-insert-in-list-target="items">
-    <div class="w-50 h-50" style="background-color: red;" data-action="click->insert-in-list#update_user">
-    <p>User1</p>
-    <%= render "users", users: @users %>
-    </div>
+    <%= render "users", users: @users , battles: @battles %>
   </div>
 </div>
 

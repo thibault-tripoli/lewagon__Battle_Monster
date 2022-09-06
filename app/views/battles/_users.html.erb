@@ -1,5 +1,15 @@
+
+
+<% if battles == "waiting" %>
+    <%= "en attente d'une reponse" %>
+  <% else %>
 <% users.each do |user| %>
   <div>
     <%= user.name %>
+        <%= form_with model: Battle.new do |f| %>
+          <%= f.hidden_field :user_id, value: user.id %>
+          <%= f.submit  %>
+        <% end %>
   </div>
+<% end %>
 <% end %>

@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   has_many :monsters
   has_one_attached :avatar
+  has_many :monsters, dependent: :destroy
   validates :name, presence: true
 end

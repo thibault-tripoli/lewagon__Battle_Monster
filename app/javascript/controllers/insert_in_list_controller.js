@@ -6,10 +6,10 @@ export default class extends Controller {
   static targets = ["items"]
   connect() {
     console.log("coucou");
-    this.interval = setInterval(this.refreshRender, 5000);
+    this.interval = setInterval(this.update_user, 1000);
   }
 
-  update_user() {
+  update_user =()=> {
     fetch("/connect", { headers: {accept: "application/json"}})
     .then(response => response.json())
     .then((data) => {
@@ -17,16 +17,7 @@ export default class extends Controller {
     })
   }
 
-  refreshRender = () => {
 
-    fetch( window.location.href, { headers: {"Accept": "application/json"} })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(load)
-      }
-    )
-
-  }
   disconnect() {
     clearInterval(this.interval)
   }
