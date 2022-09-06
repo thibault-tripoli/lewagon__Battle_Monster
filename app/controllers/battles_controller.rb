@@ -43,11 +43,18 @@ class BattlesController < ApplicationController
     @battle = Battle.find(params[:battle_id])
     select_deck
 
-    if (@next_deck.hp - current_attack.damage).positive?
-      @battle.round += 1
-      @next_deck.hp -= current_attack.damage
+    @fail = false
+    success = rand * 100 <= current_attack.success
+    if success
+      if (@next_deck.hp - current_attack.damage).positive?
+        @battle.round += 1
+        @next_deck.hp -= current_attack.damage
+      else
+        @next_deck.hp = 0
+      end
     else
-      @next_deck.hp = 0
+      @battle.round += 1
+      @fail = true
     end
     @next_deck.save
 
@@ -59,12 +66,12 @@ class BattlesController < ApplicationController
       deck1_html = render_to_string(partial: "round", locals: { battle: @battle, deck1: @deck1, deck2: @deck2, current_deck: @current_deck, next_deck: @next_deck, current_user: @deck1.user })
       DeckChannel.broadcast_to(
         @deck1,
-        { html: deck1_html, deckID: @my_deck.id, deck1_HP: @deck1.hp, deck2_HP: @deck2.hp, current_attack: current_attack }.to_json
+        { html: deck1_html, deckID: @my_deck.id, deck1_HP: @deck1.hp, deck2_HP: @deck2.hp, current_attack: current_attack, fail: @fail}.to_json
       )
       deck2_html = render_to_string(partial: "round", locals: { battle: @battle, deck1: @deck1, deck2: @deck2, current_deck: @current_deck, next_deck: @next_deck, current_user: @deck2.user })
       DeckChannel.broadcast_to(
         @deck2,
-        { html: deck2_html, deckID: @my_deck.id, deck1_HP: @deck1.hp, deck2_HP: @deck2.hp, current_attack: current_attack }.to_json
+        { html: deck2_html, deckID: @my_deck.id, deck1_HP: @deck1.hp, deck2_HP: @deck2.hp, current_attack: current_attack, fail: @fail }.to_json
       )
       head :ok
       # redirect_to battle_path(@battle)
