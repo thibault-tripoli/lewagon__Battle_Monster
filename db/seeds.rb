@@ -22,6 +22,8 @@ player2_avatar_url = URI.open("#{base_url}/tarek.jpg")
 
 player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0)
 player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0)
+User.create(email: "thib@battle.com", password: "123456", name: "Thibault", pc: 0)
+User.create(email: "jo@battle.com", password: "123456", name: "Jonathan", pc: 0)
 
 player_one.avatar.attach(io: player1_avatar_url, filename: 'tarek_avatar.png', content_type: 'image/png')
 player_two.avatar.attach(io: player2_avatar_url, filename: 'ilyes_avatar.png', content_type: 'image/png')
@@ -57,20 +59,20 @@ Attack.create!(damage: 40, success: 40, name: "Hypertroll", specie_id: specie_th
 Attack.create!(damage: 50, success: 20, name: "Erreur 500", specie_id: specie_three.id, attack_skin: "#{attack_url}/15.png", attack_btn: "#{attack_url}/btn/15.png", image_num: 15)
 
 puts "creation des stars du jeu..."
-monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id)
-monster_two = Monster.create!(name: "Toktok", user_id: player_two.id, specie_id: specie_two.id)
+_monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id)
+_monster_two = Monster.create!(name: "Toktok", user_id: player_two.id, specie_id: specie_two.id)
 
-puts "creation d'une battle + 2 decks"
-battle = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
-deck1 = Deck.create!(user: player_one, monster: monster_one, battle: battle)
-_deck2 = Deck.create!(user: player_two, monster: monster_two, battle: battle)
-battle.current_deck = deck1
-battle.save!
+# puts "creation d'une battle + 2 decks"
+# battle = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
+# deck1 = Deck.create!(user: player_one, monster: monster_one, battle: battle)
+# _deck2 = Deck.create!(user: player_two, monster: monster_two, battle: battle)
+# battle.current_deck = deck1
+# battle.save!
 
-puts "creation d'une 2eme battle + 2 decks"
-battle2 = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
-Deck.create!(user: player_one, monster: monster_one, battle: battle2)
-Deck.create!(user: player_two, monster: monster_two, battle: battle2)
-battle.save!
+# puts "creation d'une 2eme battle + 2 decks"
+# battle2 = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
+# Deck.create!(user: player_one, monster: monster_one, battle: battle2)
+# Deck.create!(user: player_two, monster: monster_two, battle: battle2)
+# battle.save!
 
 puts "Tout a été créé avec succès !"
