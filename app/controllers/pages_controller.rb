@@ -21,12 +21,9 @@ class PagesController < ApplicationController
   end
 
   def start_tutoriel
-    @user = current_user
-    @monster = Monster.find(params[:id])
-    if @monster.count > 0
-      @onboard = true
-      redirect_to page_main_path
-    end
+    # @user = current_user
+    # @monster = Monster.find(params[:id])
+    #   redirect_to page_main_path
   end
 
   def combats
