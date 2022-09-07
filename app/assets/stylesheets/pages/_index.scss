@@ -50,9 +50,13 @@ a:hover {
   text-align: left!important;
 }
 
+// reset custom style sur sign_in & sign_up
 .connect-false #main-content label,
 .connect-false #main-content input {
   color: white;
+  font-family: sans-serif;
+  text-shadow: none;
+  text-transform: none;
 }
 
 // Import page-specific CSS files here.
