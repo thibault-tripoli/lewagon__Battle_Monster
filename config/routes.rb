@@ -27,10 +27,9 @@ Rails.application.routes.draw do
 
   # Pages : Profil
   get 'profil/:id', to: 'pages#profil', as: :profil
-  get 'profil/:id/edit', to: 'pages#edit'
 
   # Templates
-  get 'templates/container'
-  get 'templates/main'
-  get 'templates/master'
+  # get 'templates/container'
+  # get 'templates/main'
+  # get 'templates/master'
 end

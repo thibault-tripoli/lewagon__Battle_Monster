@@ -1,58 +1,83 @@
-<div class="profilcontainer py-5">
-  <div class="containerpage">
-    <div class="gap"></div>
-    <div class="profil-info">
-      <img class="profil-info-avatar" src="https://res.cloudinary.com/didd5gcsw/image/upload/v1/production/zlpglk2ujzucz2tubylcztzcrkcu">
-      <div class="profil-info-content">
-        <h1>Profil de Tarek</h1>
-        <ul>
-          <li><strong>PogCoin : </strong> 999 pc</li>
-          <li><strong>Monstre : </strong>4</li>
-        </ul>
+
+<div id="main-container" class="monster-block">
+  <div id="main-container-items">
+    <div id="main-content" class="profil">
+      <div class="main-separation">
+        <div class="profil-gauche">
+
+          <div class="profil-info">
+
+            <img src="<%= cl_image_path current_user.avatar.key %>" width="150" class="profil-info-avatar">
+            <h1><%= @user.name %></h1>
+
+          </div>
+
+          <div class="profil-stat">
+
+            <div class="profil-stat-item">
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/pog.png" width=40px />
+              <p><%= @user.pc %> PogCoin</p>
+            </div>
+
+            <div class="profil-stat-item">
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/battle.png" width=40px />
+              <% if @battles.count <= 1 %>
+                <p><%= @battles.count %> Combat</p>
+              <% else %>
+                <p><%= @battles.count %> Combats</p>
+              <% end %>
+            </div>
+
+            <div class="profil-stat-item">
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/medal.png" width=40px />
+              <% if @victory.count <= 1 %>
+                <p><%= @victory.count %> Victoire</p>
+              <% else %>
+                <p><%= @victory.count %> Victoires</p>
+              <% end %>
+            </div>
+
+          </div>
+
+          <div class="profil-monster">
+
+            <div class="profil-monster-head">
+              <img src="<%= image_path(@user.monsters.first.specie.monster_head)%>" width="120">
+            </div>
+            <div class="profil-monster-info">
+              <h3><%= @user.monsters.first.name %></h3>
+              <p><%= @user.monsters.first.specie.name.capitalize %> - <%= @user.monsters.first.xp %> xp</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div id="profil-droite">
+          <div class="profil-last">
+            <h2 class="h-red">Votre dernier combat</h2>
+            <div class="profil-last-info">
+              <% if @battles.last.battle.winner_id == current_user.id %>
+                <p>Vous avez gagné !</p>
+              <% else %>
+                <p>Vous avez perdu !</p>
+              <% end %>
+              <p>(<%= @battles.last.battle.created_at.strftime("%d/%m/%Y") %>)</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-
-
-    <div class="profil-monsters">
-      <h2>Mes Monstres</h2>
-        <div class="display-cards">
-          <div class="card_container">
-            <div class="card" style='background-image: url("http://onepage.dropagence.fr/game/place/game-background-<%= rand(1..5) %>.png");'>
-              <img src="http://onepage.dropagence.fr/game/place/golem-1-1.png" alt="Golem" width="180px" height="180px">
-              <div class="monster-info">
-                <span class="monster-info-top">Durdur</span>
-                <span class="monster-info-bottom">Lv 2 - 12pc</span>
-              </div>
-            </div>
-          </div>
-          <div class="card_container" >
-            <div class="card" style='background-image: url("http://onepage.dropagence.fr/game/place/game-background-<%= rand(1..5) %>.png");'>
-              <img src="http://onepage.dropagence.fr/game/place/troll-1-1.png" alt="Golem" width="180px" height="180px">
-              <div class="monster-info">
-                <span class="monster-info-top">Kas'tète</span>
-                <span class="monster-info-bottom">Lv 10 - 48pc</span>
-              </div>      </div>
-          </div>
-          <div class="card_container" >
-            <div class="card" style='background-image: url("http://onepage.dropagence.fr/game/place/game-background-<%= rand(1..5) %>.png");'>
-              <img src="http://onepage.dropagence.fr/game/place/garou-1-1.png" alt="Golem" width="180px" height="180px">
-              <div class="monster-info">
-                <span class="monster-info-top">Awou Awou</span>
-                <span class="monster-info-bottom">Lv 21 - 666pc</span>
-              </div>
-            </div>
-          </div>
-                <div class="card_container" >
-            <div class="card" style='background-image: url("http://onepage.dropagence.fr/game/place/game-background-<%= rand(1..5) %>.png");'>
-              <img src="http://onepage.dropagence.fr/game/place/garou-2-1.png" alt="Golem" width="180px" height="180px">
-              <div class="monster-info">
-                <span class="monster-info-top">Clovis 1er</span>
-                <span class="monster-info-bottom">Lv 26 - 698pc</span>
-              </div>
-            </div>
-          </div>
-      </div>
+    <div id="main-controls">
+      <%= link_to page_main_path do %>
+        <div class="circle-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+      <% end  %>
+      <% if @user == current_user %>
+        <div class="large-btn"><h3>edit</h3></div>
+      <% end %>
     </div>
-    <div class="gap"></div>
   </div>
 </div>

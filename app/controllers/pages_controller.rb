@@ -1,34 +1,13 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
-  def home
-  end
-
   def profil
-  end
-
-  def main
-  end
-
-  def start_intro
-    # @user = current_user
-    # if @user.onboard
-    #   redirect_to
+    @user = User.find(params[:id])
+    @battles = Deck.where(user_id: @user)
+    @victory = Battle.where(winner_id: @user)
   end
 
   def start_monster
     @monster = Monster.new
-  end
-
-  def start_tutoriel
-    # @user = current_user
-    # @monster = Monster.find(params[:id])
-    #   redirect_to page_main_path
-  end
-
-  def combats
-  end
-
-  def edit
   end
 end
