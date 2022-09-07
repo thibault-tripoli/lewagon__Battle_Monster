@@ -20,8 +20,8 @@ base_url = 'https://onepage.dropagence.fr/game/bm/img/static'
 player1_avatar_url = URI.open("#{base_url}/ilyes.jpg")
 player2_avatar_url = URI.open("#{base_url}/tarek.jpg")
 
-player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0)
-player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0)
+player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0, onboard: true)
+player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0, onboard: true)
 User.create(email: "thib@battle.com", password: "123456", name: "Thibault", pc: 0)
 User.create(email: "jo@battle.com", password: "123456", name: "Jonathan", pc: 0)
 
