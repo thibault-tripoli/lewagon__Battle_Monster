@@ -1,4 +1,9 @@
-<main class="interface">
+<% class_user = 'connect-false' %>
+<% if user_signed_in? %>
+<% class_user = 'connect-true' %>
+<% end %>
+
+<main class="interface <%= class_user %>">
   <div id="main-header">
 
     <%= link_to root_path, :class => "d-flex" do %>

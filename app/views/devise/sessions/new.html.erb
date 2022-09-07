@@ -1,27 +1,17 @@
 <div id="main-container" class="monster-block">
-
   <div id="main-container-items">
-
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
     <div id="main-content">
 
       <h1>Connexion</h1>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
 
+        <%= f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" } %>
+        <%= f.input :password, required: false, input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= f.button :submit, "Connexion" %>
 
-          <%= f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" } %>
-          <%= f.input :password, required: false, input_html: { autocomplete: "current-password" } %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-
-      <div id="main-controls">
-        <div></div>
-        <div class="large-btn">
-          <h3><%= f.button :submit, "Connexion" %></h3>
-        </div>
-      </div>
+      <% end %>
 
     </div>
-    <% end %>
-
   </div>
-
 </div>

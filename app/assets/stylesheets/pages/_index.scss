@@ -8,14 +8,14 @@ a:hover {
 }
 
 // reset input
-input,
-input:focus,
-.form-control,
-.form-control:focus,
-.form-control:hover,
-.form-select,
-.form-select:focus
-.form-select:hover {
+.connect-true input,
+.connect-true input:focus,
+.connect-true .form-control,
+.connect-true .form-control:focus,
+.connect-true .form-control:hover,
+.connect-true .form-select,
+.connect-true .form-select:focus
+.connect-true .form-select:hover {
   all: unset!important;
   display: block!important;
   width: 100%!important;
@@ -39,7 +39,7 @@ input:focus,
   text-transform: uppercase!important;
 }
 
-.mb-3 {
+.connect-true .mb-3 {
   width: 100%!important;
   height: 100%!important;
   font-size: 24px!important;
@@ -48,6 +48,11 @@ input:focus,
   align-items: center!important;
   padding-left: 27px!important;
   text-align: left!important;
+}
+
+.connect-false #main-content label,
+.connect-false #main-content input {
+  color: white;
 }
 
 // Import page-specific CSS files here.
