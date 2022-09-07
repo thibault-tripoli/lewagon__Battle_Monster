@@ -15,6 +15,10 @@
           <div class="monster-specie-items">
             <% species.each do |specie| %>
               <div class="monster-specie-info">
+                <div class="monster-specie-info-data">
+                  <h3>Info <%= specie.name %></h3>
+                  <p><%= specie.info %></p>
+                </div>
                 <img classe="monster-head" src="<%= specie.monster_head %>" width="90px" height="90px">
                 <h4><%= specie.name %></h4>
               </div>
@@ -58,7 +62,7 @@
         <% end  %>
 
         <div class="large-btn">
-          <h3><%= f.submit %></h3>
+          <h3><%= f.submit 'valider votre monstrer' %></h3>
         </div>
 
       </div>
