@@ -10,30 +10,48 @@
   background-size: cover;
 }
 
+#combats-title {
+  display: flex;
+  justify-content: end;
+}
+
+#combats-title h1 {
+  background: #2A2A2B;
+  border: 5px solid white;
+  border-radius: 15px;
+  width: 400px;
+  padding: 10px 0 5px 25px;
+  margin-bottom: 50px;
+}
+
 .arena-info, .arena-deck, .deck-label, .arena-limit {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
+.deck-label { padding: 0 10px }
+
 .arena-deck {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: -30px;
 }
 
 .progress-bar {
   background-color: #1a1a1a;
-  height: 25px;
+  height: 50px;
   width: 500px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 15px;
   -moz-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
   -webkit-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
   box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
   position: relative;
   overflow: hidden;
+  border: 5px solid white;
 }
 
 .progress-bar span {
@@ -53,7 +71,32 @@
     transition: width .4s ease-in-out;
 }
 
-.blue span { background-color: #499A90 }
+.blue span { background-color: #469f6a }
+
+.arena-players {
+  display: flex;
+  justify-content: space-between;
+}
+
+.arena-deck-player {
+  display: flex;
+  align-items: center;
+}
+
+.arena-deck-player .avatar {
+  border-color: white;
+  margin: 0 20px
+}
+#round-controls .avatar {
+  border-color: white;
+  margin: 30px auto;
+  width: 75px;
+  height: 75px;
+}
+
+.arena-deck-player h2 {
+  margin-top: 10px
+}
 
 // controls
 .go-control {
@@ -66,16 +109,22 @@
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  text-align: center;
-  background: rgba(255,255,255, 0.5);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .go-control > div {
-  background: white;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 80px 120px;
+  background: #2A2A2B;
+  border: 10px solid white;
+  border-radius: 15px;
+  padding: 70px 100px;
+  margin-bottom: 50px;
 }
+
+.go-control .large-btn {
+  width: 150px!important;
+  margin: 10px auto;
+}
+
 .arena-limit p {
   font-size: 30px;
 }
@@ -106,21 +155,54 @@
   right: 0;
   display: flex;
   justify-content: space-around;
-  bottom: 20vh;
+  bottom: 15vh;
 }
 
-.nx-control .btn {
-  margin-top: 30px;
+.nx-control h1 {
+  margin-bottom: 10px;
 }
 
-.btn-combats {
-  background-color: #499A90;
-  border-color: white;
-  color: white;
+.nx-control > div {
+  background: #2A2A2B;
+  border: 5px solid white;
+  border-radius: 15px;
+  width: 250px;
+  padding: 35px 40px 50px;
+  width: 300px;
+  position: relative
 }
 
-.btn-combats:hover {
-  background-color: white;
-  border-color: #499A90;
-  color: #499A90;
+.nx-control .next {
+  padding: 35px 40px!important;
+}
+
+.nx-control-attacks {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  right:15px;
+  left: 15px;
+  bottom: -40px
+}
+
+.attack-avatar img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 5px solid #DA4D43;
+  background: #DA4D43;
+}
+
+// loading
+
+.loading-content {
+  display: flex;
+  align-items: center;
+}
+
+.loading-content img {
+  width: 200px;
+  margin-right: 50px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }

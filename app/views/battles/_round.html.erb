@@ -9,22 +9,30 @@
         <% if deck2.user == current_user %>
 
           <div class="victory">
-            <h2>Félicitations !</h2>
-            <p>Vous avez gagné contre <%= deck1.user.name %>, <br>quelle performance !!</p>
+            <h1 class="h-yellow">Félicitations !</h1>
+            <h3>Vous avez gagné contre<br><%= deck1.user.name %></h3>
+            <img class="avatar" src="<%= cl_image_path deck1.user.avatar.key %>">
+            <h3>quelle performance !!</h3>
             <%= simple_form_for(battle) do |f| %>
-              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck2.user_id, :class => 'form-control' } %>
-              <%= f.submit 'Retour au menu', :class => 'btn btn-combats' %>
+              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck2.user_id } %>
+              <div class="large-btn">
+                <h3><%= f.submit 'continuer' %></h3>
+              </div>
             <% end %>
           </div>
 
         <% else %>
 
           <div class="game-over">
-            <h2>Game Over !</h2>
-            <p>Vous avez perdu contre <%= deck2.user.name %> ... <br>vous ferez mieux la prochaine fois !</p>
+            <h1 class="h-yellow">Game Over !</h1>
+            <h3>Vous avez perdu contre<br><%= deck2.user.name %></h3>
+            <img class="avatar" src="<%= cl_image_path deck2.user.avatar.key %>">
+            <h3>vous ferez mieux la prochaine fois !</h3>
             <%= simple_form_for(battle) do |f| %>
-              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck2.user_id, :class => 'form-control' } %>
-              <%= f.submit 'Retour au menu', :class => 'btn btn-combats' %>
+              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck2.user_id } %>
+              <div class="large-btn">
+                <h3><%= f.submit 'continuer' %></h3>
+              </div>
             <% end %>
           </div>
 
@@ -39,22 +47,30 @@
         <% if deck1.user == current_user %>
 
           <div class="victory">
-            <h2>Félicitations !</h2>
-            <p>Vous avez gagné contre <%= deck2.user.name %>, <br>quelle performance !!</p>
+            <h1 class="h-yellow">Félicitations !</h1>
+            <h3>Vous avez gagné contre<br><%= deck2.user.name %></h3>
+            <img class="avatar" src="<%= cl_image_path deck2.user.avatar.key %>">
+            <h3>quelle performance !!</h3>
             <%= simple_form_for(battle) do |f| %>
-              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck1.user_id, :class => 'form-control' } %>
-              <%= f.submit 'Retour au menu', :class => 'btn btn-combats' %>
+              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck1.user_id } %>
+              <div class="large-btn">
+                <h3><%= f.submit 'continuer' %></h3>
+              </div>
             <% end %>
           </div>
 
         <% else %>
 
           <div class="game-over">
-            <h2>Game Over !</h2>
-            <p>Vous avez perdu contre <%= deck1.user.name %> ... <br>vous ferez mieux la prochaine fois !</p>
+            <h1 class="h-yellow">Game Over !</h1>
+            <h3>Vous avez perdu contre<br><%= deck1.user.name %></h3>
+            <img class="avatar" src="<%= cl_image_path deck1.user.avatar.key %>">
+            <h3>vous ferez mieux la prochaine fois !</h3>
             <%= simple_form_for(battle) do |f| %>
-              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck1.user_id, :class => 'form-control' } %>
-              <%= f.submit 'Retour au menu', :class => 'btn btn-combats' %>
+              <%= f.input :winner_id, :as => :hidden, :input_html => { :value => deck1.user_id } %>
+              <div class="large-btn">
+                <h3><%= f.submit 'continuer' %></h3>
+              </div>
             <% end %>
           </div>
 
@@ -67,17 +83,18 @@
       <div class="nx-control">
         <% if current_deck.user == current_user %>
           <div class="current">
-            <h2>Round <%= battle.round %></h2>
-            <h3><%= current_deck.user.name %> à toi de jouer</h3>
-            <a data-action="click->battle-subscription#one" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_one.id %>"/></div></a>
-            <a data-action="click->battle-subscription#two" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_two.id %>"/></div></a>
-            <a data-action="click->battle-subscription#three" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_three.id %>"/></div></a>
+            <h1>Round <%= battle.round %></h1>
+            <h3><%= current_deck.user.name %><br>à toi de jouer</h3>
+            <div class="nx-control-attacks">
+              <a data-action="click->battle-subscription#one" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="attack-avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_one.id %>"/></div></a>
+              <a data-action="click->battle-subscription#two" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="attack-avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_two.id %>"/></div></a>
+              <a data-action="click->battle-subscription#three" href="<%= battle_next_round_path(battle, next_deck) %>"><div class="attack-avatar"><img src="https://onepage.dropagence.fr/game/bm/img/static/attack/btn/<%= current_deck.attack_three.id %>"/></div></a>
+            </div>
           </div>
         <% else %>
           <div class="next">
-            <h2>Round <%= battle.round %></h2>
-            <h3>Votre adversaire est en train de jouer</h3>
-            <p>Aucune action disponible</p>
+            <h1>Round <%= battle.round %></h1>
+            <h3>C'est au tour de ton adversaire</h3>
           </div>
         <% end %>
       </div>

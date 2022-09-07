@@ -15,14 +15,14 @@ h1, h2, h3, h4, h5, h6, input {
   text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
 
-h1 {font-size: 48px }
+h1 {font-size: 48px; }
 h2 {font-size: 40px }
 h3 {font-size: 32px }
 h4 {font-size: 24px }
 h5 {font-size: 16px }
 
 .h-red { color:#DA4D43; text-shadow: none; }
-.h-yellow { color:#FFBD59; text-shadow: none; }
+.h-yellow { color:#FFBD59!important; text-shadow: none; }
 
 p { font-size: 16px; font-family: sans-serif; color: white }
 
@@ -45,6 +45,7 @@ main.interface {
 }
 #main-header    {height: 20%;}
 #main-container {height: 75%;}
+#main-container h1 { margin-bottom: 30px;}
 
 #main-container.monster-menu { align-items: end; }
 #main-container.monster-block { align-items: center; }
@@ -74,7 +75,7 @@ main.interface {
 }
 
 #main-player img,
-.avatar img {
+.avatar {
   width: 62px;
   height: 62px;
   border-radius: 50%;
@@ -122,7 +123,7 @@ main.interface {
 
 .monster-row {
   height: 70px;
-  width: 85%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -213,6 +214,12 @@ main.interface {
   background: #DA4D43;
 }
 
+.circle-btn i {
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
 .large-btn,
 .big-btn,
 .master-btn {
@@ -226,7 +233,14 @@ main.interface {
 
 .large-btn { /* h3 */
   height: 60px;
-  min-width: 200px;
+  min-width: 300px;
+}
+
+.large-btn input {
+  /* h3 */
+  padding: 0;
+  border-radius: 0;
+  text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
 
 .big-btn { /* h2 */
@@ -251,7 +265,7 @@ main.interface {
 
 .master-btn h1,
 .big-btn h2,
-.large-btn h3 { margin-bottom: -5px; }
+.large-btn h3 { margin-bottom: -5px!important; }
 
 .large-btn:hover,
 .big-btn:hover,

@@ -1,13 +1,5 @@
 class BattlesController < ApplicationController
-  def match
-    # j'instancie la battle
-    # je trouve un user connecté
-    # je valide le match
-  end
-
   def create
-    # j'enregistre la battle
-    # je redirige vers setup
     @battle = Battle.new
     @battle.pc_win = 10
     @battle.xp_win = 20
@@ -16,7 +8,6 @@ class BattlesController < ApplicationController
     @deck_1 = Deck.new
     @deck_1.user = current_user
     @deck_1.monster_id = current_user.monsters.first.id
-
 
     @deck_1.battle_id = @battle.id
     @deck_1.save!
@@ -40,11 +31,6 @@ class BattlesController < ApplicationController
     @setup_specie = @setup_deck.monster.specie
   end
 
-  def setup_create
-    # j'enregistre le setup
-    # je redirige vers loading
-  end
-
   def loading
     @battle = Battle.find(params[:battle_id])
     @battle.current_deck = @battle.decks.first
@@ -65,7 +51,10 @@ class BattlesController < ApplicationController
     @current_deck = @battle.current_deck
     select_deck
     redirect_to battle_setup_path(@battle, @my_deck) if @my_deck.empty
-    @battle.status = "started" if @battle.status == "pending"
+    if @battle.status == "pending"
+      @battle.status = "started"
+      @battle.round = 1
+    end
     @battle.save
   end
 
@@ -118,6 +107,8 @@ class BattlesController < ApplicationController
     winner_monster = winner.monsters.first
     winner.pc += @battle.pc_win
     winner_monster.xp += @battle.xp_win
+    @battle.pc_win = 0
+    @battle.xp_win = 0
 
     if @battle.save
       winner.save
@@ -185,5 +176,4 @@ class BattlesController < ApplicationController
   def game_over
     params.require(:battle).permit(:winner_id)
   end
-
 end

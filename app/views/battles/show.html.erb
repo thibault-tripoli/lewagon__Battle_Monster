@@ -6,14 +6,16 @@
       data-battle-subscription-deck1-id-value="<%= @deck1.id %>"
       data-battle-subscription-deck2-id-value="<%= @deck2.id %>"
     >
-      <h1>Combat #<%= @battle.id %></h1>
-      <div class="gap"></div>
+
+      <div id="combats-title">
+        <h1>Combat #<%= @battle.id %></h1>
+      </div>
 
       <div class="arena">
 
         <div class="arena-info">
           <div class="arena-deck-1">
-            <div class="deck-label"><h3><%= @deck1.monster.name %></h3><p><%= @deck1.monster.xp %> xp</p></div>
+            <div class="deck-label"><h2><%= @deck1.monster.name %></h2><h2><%= @deck1.monster.xp %> xp</h2></div>
             <div id="progress1" class="progress-bar blue stripes"><span class="prog-1" style="width:<%= @deck1.hp %>%"></span></div>
           </div>
 
@@ -22,7 +24,7 @@
           </div>
 
           <div class="arena-deck-2">
-            <div class="deck-label"><p><%= @deck2.monster.xp %> xp</p><h3><%= @deck2.monster.name %></h3></div>
+            <div class="deck-label"><h2><%= @deck2.monster.xp %> xp</h2><h2><%= @deck2.monster.name %></h2></div>
             <div id="progress2" class="progress-bar blue stripes"><span class="prog-2" style="width:<%= @deck2.hp %>%"></span></div>
           </div>
         </div>
@@ -37,6 +39,22 @@
           </div>
         </div>
 
+        <div class="arena-players">
+          <div class="arena-deck-1">
+            <div id="arena-deck-1-player" class="arena-deck-player">
+              <img class="avatar" src="<%= cl_image_path @deck1.user.avatar.key %>">
+              <h2>Joueur 1 - <%= @deck1.user.name %></h2>
+            </div>
+          </div>
+
+          <div class="arena-deck-2">
+            <div id="arena-deck-2-player" class="arena-deck-player">
+              <h2><%= @deck2.user.name %> - Joueur 2</h2>
+              <img class="avatar" src="<%= cl_image_path @deck2.user.avatar.key %>">
+            </div>
+          </div>
+        </div>
+
         <div id="arena-attack-1"></div>
         <div id="arena-attack-2"></div>
 
@@ -48,4 +66,5 @@
 
     </div>
   </div>
+  <style>#main-header {display: none;}</style>
 </div>

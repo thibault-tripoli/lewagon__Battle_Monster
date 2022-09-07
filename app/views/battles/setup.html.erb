@@ -1,15 +1,47 @@
-<style>
-  p { color: black }
-</style>
+<div id="main-container" class="monster-block">
 
-<div>
-  <h1>Préparez votre Deck pour la bataille #<%= @battle.id %></h1>
-  <p> choisis ton attaque </p>
+  <%= simple_form_for [@battle, @setup_deck] do |f| %>
+  <div id="main-container-items">
+
+    <div id="main-content">
+
+      <h1>Préparez votre Deck pour le combat #<%= @battle.id %></h1>
+
+      <div class="monster-row">
+        <div class="monster-row-content">
+          <h3 class="h-red">Attaque 1</h3>
+        </div>
+        <div class="monster-row-right large-btn large-input large-btn-chevron">
+          <%= f.association :attack_one, collection: @setup_specie.attacks, include_blank: :empty, label: false %>
+        </div>
+      </div>
+
+      <div class="monster-row">
+        <div class="monster-row-content">
+          <h3 class="h-red">Attaque 2</h3>
+        </div>
+        <div class="monster-row-right large-btn large-input large-btn-chevron">
+          <%= f.association :attack_two, collection: @setup_specie.attacks, include_blank: :empty, label: false %>
+        </div>
+      </div>
+
+      <div class="monster-row">
+        <div class="monster-row-content">
+          <h3 class="h-red">Attaque 3</h3>
+        </div>
+        <div class="monster-row-right large-btn large-input large-btn-chevron">
+          <%= f.association :attack_three, collection: @setup_specie.attacks, include_blank: :empty, label: false %>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="main-controls">
+      <div></div>
+      <div id="submit" class="large-btn"><h3><%= f.button :submit %></h3></div>
+    </div>
+
+  </div>
+  <% end %>
+
 </div>
-
-<%= simple_form_for [@battle, @setup_deck] do |f| %>
-  <%= f.association :attack_one, collection: @setup_specie.attacks, label: "choisis l'attaque 1", include_blank: :empty %>
-  <%= f.association :attack_two, collection: @setup_specie.attacks, label: "choisis l'attaque 2", include_blank: :empty %>
-  <%= f.association :attack_three, collection: @setup_specie.attacks, label: "choisis l'attaque 3", include_blank: :empty %>
-  <%= f.button :submit %>
-<% end %>

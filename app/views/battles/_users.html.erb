@@ -1,28 +1,73 @@
-
-
 <% if pending_deck %>
-    <%=  pending_deck.user.name %>
-  <%= link_to "preparation au combat", battle_setup_path(pending_deck.battle) %>
+
+  <div class="monster-row">
+    <div class="monster-row-content">
+      <img class="avatar" src="<%= cl_image_path current_user.avatar.key %>">
+      <h3 class="h-red"><%#= pending_deck.user.name %>Le combat est confirmé</h3>
+    </div>
+    <div class="monster-row-right large-btn">
+      <h3><%= link_to "C'est parti", battle_setup_path(pending_deck.battle) %></h3>
+    </div>
+  </div>
+
 <% else %>
-  <% users.each do |user| %>
-    <div>
-      <%= user.name %>
-      <% deck = user.decks.joins(:battle).where(battles: {status: "waiting"}).last %>
-      <% if deck %>
-        <% if deck.id == deck.battle.current_deck_id  %>
-          a accepeter votre duel
-          <%= form_with url: battle_accept_path(deck.battle.id) do |f| %>
-            <%= f.submit  %>
+
+  <% if users.count > 0 %>
+    <% users.each do |user| %>
+      <div class="monster-row">
+
+        <% deck = user.decks.joins(:battle).where(battles: {status: "waiting"}).last %>
+        <% if deck %>
+          <% if deck.id == deck.battle.current_deck_id  %>
+
+            <div class="monster-row-content">
+              <img class="avatar" src="<%= cl_image_path user.avatar.key %>">
+              <h3 class="h-red"><%= user.name %> vous défie !</h3>
+            </div>
+
+            <%= form_with url: battle_accept_path(deck.battle.id) do |f| %>
+              <div class="monster-row-right large-btn">
+                <%= f.submit 'Accepter' %>
+              </div>
+            <% end %>
+
+          <% else %>
+
+            <div class="monster-row-content">
+              <img class="avatar" src="<%= cl_image_path user.avatar.key %>">
+              <h3 class="h-red"><%= user.name %> doit confirmer</h3>
+            </div>
+            <div class="monster-row-right large-btn">
+              <h3>En attente</h3>
+            </div>
+
           <% end %>
         <% else %>
-          en attente
-        <% end %>
-      <% else %>
+            <div class="monster-row-content">
+              <img class="avatar" src="<%= cl_image_path user.avatar.key %>">
+              <h3 class="h-red"><%= user.name %> est en ligne</h3>
+            </div>
+
           <%= form_with model: Battle.new do |f| %>
             <%= f.hidden_field :user_id, value: user.id %>
-            <%= f.submit  %>
+            <div class="monster-row-right large-btn">
+              <h3><%= f.submit "Défier !" %></h3>
+            </div>
           <% end %>
-      <% end %>
+
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="monster-row">
+      <div class="monster-row-content">
+        <img class="avatar" src="<%= cl_image_path current_user.avatar.key %>">
+        <h3 class="h-red">Aucun adversaire en ligne</h3>
+      </div>
+      <div class="monster-row-right large-btn">
+        <h3><%= link_to 'Retour', page_combats_path %></h3>
+      </div>
     </div>
   <% end %>
+
 <% end %>

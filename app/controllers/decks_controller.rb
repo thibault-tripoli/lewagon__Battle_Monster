@@ -1,6 +1,7 @@
 class DecksController < ApplicationController
   def update
     @deck = Deck.find(params[:id])
+    @battle = Battle.find(params[:battle_id])
     @deck.update(setup_params)
     @deck.empty = false
     if @deck.attack_one && @deck.attack_two && @deck.attack_three && @deck.save

@@ -10,11 +10,9 @@ Rails.application.routes.draw do
 
     resources :decks, only: [:update]
     get "loading", to: 'battles#loading', as: :loading
-      #connection
-    end
-  get "match", to: 'battles#match', as: :match
+  end
+  # Connection -> match
   get 'connect', to: 'battles#connect'
-
   get 'users_connected', to: 'battles#users_connected'
 
   # Monsters
@@ -26,7 +24,6 @@ Rails.application.routes.draw do
   get "page/start_monster", to: 'pages#start_monster'
   get "page/start_tutoriel", to: 'pages#start_tutoriel'
   get "page/combats", to: "pages#combats"
-  get "page/fake", to: "pages#fake"
 
   # Pages : Profil
   get 'profil/:id', to: 'pages#profil', as: :profil
@@ -36,6 +33,4 @@ Rails.application.routes.draw do
   get 'templates/container'
   get 'templates/main'
   get 'templates/master'
-
-
 end

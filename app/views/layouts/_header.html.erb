@@ -1,0 +1,27 @@
+<main class="interface">
+  <div id="main-header">
+
+    <%= link_to root_path, :class => "d-flex" do %>
+      <img id="main-logo" src="https://onepage.dropagence.fr/game/bm/img/logo-bm.png">
+    <% end %>
+
+    <% if user_signed_in? %>
+      <div id="main-player">
+        <h2><%= current_user.name %></h2>
+        <div class="main-player-menu">
+
+          <img src="<%= cl_image_path current_user.avatar.key %>">
+
+          <%= link_to profil_path(current_user) do %>
+            <div class="circle-btn"><i class="fa-solid fa-house-user"></i></div>
+          <% end %>
+
+          <%= link_to destroy_user_session_path, :method => :delete do %>
+            <div class="circle-btn"><i class="fa-solid fa-door-open"></i></div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+  <% # yield %>

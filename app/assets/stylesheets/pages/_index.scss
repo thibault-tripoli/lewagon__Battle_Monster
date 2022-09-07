@@ -10,49 +10,14 @@ a {
   text-decoration: none;
 }
 
-// global
-.main-container {
-  min-height: 83vh;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+a:hover {
+  color: inherit;
 }
 
-.main-content {
-  max-width: 750px;
-  text-align: center;
-}
-
-.main-content img {
-  width: 100%;
-  height: auto;
-}
-
-.main-content p {
-  max-width: 80%;
-  margin: 0 auto 20px;
-}
-
-.main-content * {
-  margin-bottom: 20px;
-}
-
-.main-container .container-left {
-  position: absolute;
-  left: 0;
-  bottom: 53px;
-  text-align: left;
-}
-
-.main-container .container-right {
-  position: absolute;
-  right: 0;
-  bottom: 53px;
-  text-align: right;
+input {
+  background: none;
+  border: none;
+  font-family: 'Teko', sans-serif;
+  font-size: inherit;
+  color: white;
 }
