@@ -77,9 +77,9 @@ class BattlesController < ApplicationController
     end
     @next_deck.save
 
+    @battle.current_deck = @next_deck
+    @battle.save
     @current_deck = @battle.current_deck
-    @current_deck = @next_deck
-    @current_deck.save
 
     if @battle.save
       deck1_html = render_to_string(partial: "round", locals: { battle: @battle, deck1: @deck1, deck2: @deck2, current_deck: @current_deck, next_deck: @next_deck, current_user: @deck1.user })
@@ -155,7 +155,6 @@ class BattlesController < ApplicationController
     if current_user == @deck1.user
       @next_deck = @deck2
       @my_deck = @deck1
-
     else
       @next_deck = @deck1
       @my_deck = @deck2

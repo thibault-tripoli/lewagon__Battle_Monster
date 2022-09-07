@@ -273,7 +273,6 @@ main.interface {
   cursor: pointer;
 }
 
-
 // HOVER EFFECT ON BUTTONS
 // Buttons on main page
 
@@ -288,4 +287,8 @@ main.interface {
 .button-1:hover {
   box-shadow: 0 0 5px 0 #FFBD59 inset, 0 0 10px 1px #FFBD59;
   border: 1px solid #FFBD59;
+}
+
+.circle-btn.button-1 {
+  width:65px;
 }
