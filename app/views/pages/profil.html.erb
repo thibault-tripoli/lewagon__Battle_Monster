@@ -54,18 +54,34 @@
         </div>
 
         <div id="profil-droite">
-          <div class="profil-last">
-            <img src="https://onepage.dropagence.fr/game/bm/img/static/ugly/tuto.png" width="120" />
-            <h2 class="h-red">Votre dernier combat</h2>
-            <div class="profil-last-info">
-              <% if @battles.last.battle.winner_id == current_user.id %>
-                <p>Vous avez gagné !</p>
-              <% else %>
-                <p>Vous avez perdu !</p>
-              <% end %>
-              <p>(<%= @battles.last.battle.created_at.strftime("%d/%m/%Y") %>)</p>
+
+          <% if @battles.count == 0 %>
+
+            <div class="profil-last">
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/ugly/tuto.png" />
+              <h2 class="h-red">Votre dernier combat</h2>
+              <div class="profil-last-info">
+                <p>Vous n'avez pas<br>encore joué !</p>
+              </div>
             </div>
-          </div>
+
+          <% else %>
+
+            <div class="profil-last">
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/ugly/tuto.png" />
+              <h2 class="h-red">Votre dernier combat</h2>
+              <div class="profil-last-info">
+                <% if @battles.last.battle.winner_id == current_user.id %>
+                  <p>Vous avez gagné !</p>
+                <% else %>
+                  <p>Vous avez perdu !</p>
+                <% end %>
+                <p>(<%= @battles.last.battle.created_at.strftime("%d/%m/%Y") %>)</p>
+              </div>
+            </div>
+
+          <% end %>
+
         </div>
 
       </div>
