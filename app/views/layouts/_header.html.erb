@@ -13,11 +13,11 @@
           <img src="<%= cl_image_path current_user.avatar.key %>">
 
           <%= link_to profil_path(current_user) do %>
-            <div class="circle-btn"><i class="fa-solid fa-house-user"></i></div>
+            <div class="circle-btn button-1"><i class="fa-solid fa-house-user"></i></div>
           <% end %>
 
           <%= link_to destroy_user_session_path, :method => :delete do %>
-            <div class="circle-btn"><i class="fa-solid fa-door-open"></i></div>
+            <div class="circle-btn button-1"><i class="fa-solid fa-door-open"></i></div>
           <% end %>
         </div>
       </div>

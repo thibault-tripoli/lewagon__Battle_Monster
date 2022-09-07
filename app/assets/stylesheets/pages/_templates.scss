@@ -24,7 +24,7 @@ h5 {font-size: 16px }
 .h-red { color:#DA4D43; text-shadow: none; }
 .h-yellow { color:#FFBD59!important; text-shadow: none; }
 
-p { font-size: 16px; font-family: sans-serif; color: white }
+p { font-size: 18px; font-family:'Yanone Kaffeesatz', sans-serif; color: white }
 
 /* Layout main */
 
@@ -272,4 +272,21 @@ main.interface {
 .master-btn:hover {
   cursor: pointer;
   opacity: 0.9;
+}
+
+
+// HOVER EFFECT ON BUTTONS
+// Buttons on main page
+
+.button-1 {
+
+  border: 1px solid #DA4D43;
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: #DA4D43;
+}
+.button-1:hover {
+  box-shadow: 0 0 5px 0 #FFBD59 inset, 0 0 10px 1px #FFBD59;
+  border: 1px solid #FFBD59;
 }
