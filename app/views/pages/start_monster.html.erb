@@ -1,52 +1,70 @@
-<%= simple_form_for @monster do |f| %>
+
 <div id="main-container" class="monster-block">
+
   <% species = Specie.all %>
-  <div id="main-container-items">
-    <div id="main-content" class="main-content-start-monster">
-      <h2>Choisis ton premier monstre</h2>
-      <div class="form-inputs d-flex justify-content-between align-items-center">
-        <p>Cliquer sur un monstre <br>pour en savoir plus<br> sur son espèce: </p>
-        <% species.each do |specie| %>
-          <div class="d-flex align-items-center flex-column">
-            <img classe="monster-head" src="<%= specie.monster_head %>" alt="" width="90px" height="90px">
-            <p><%= specie.name %></p>
-          </div>
-        <% end %>
-      </div><br>
+  <%= simple_form_for @monster do |f| %>
 
+    <div id="main-container-items">
 
+      <div id="main-content">
 
+        <h1>Choisis ton premier monstre</h1>
+        <div class="monster-specie">
 
-          <div class="monster-row">
-            <div class="monster-row-content">
-              <h3 class="h-red">Choisis une espèce</h3>
-            </div>
-            <div class="monster-row-right large-btn large-input large-btn-chevron">
-              <%= f.association  :specie, collection: Specie.all, include_blank: :empty, label: false %>
-            </div>
+          <p>Survole un monstre pour en savoir plus sur son espèce ! </p>
+          <div class="monster-specie-items">
+            <% species.each do |specie| %>
+              <div class="monster-specie-info">
+                <img classe="monster-head" src="<%= specie.monster_head %>" width="90px" height="90px">
+                <h4><%= specie.name %></h4>
+              </div>
+            <% end %>
           </div>
 
-          <%# <%= f.association  :specie, collection: species, include_blank: :empty %>
-            <%# label: "choisis l'espece de ton monstre", include_blank: :empty %>
-          <div class="monster-row">
-            <div class="monster-row-content">
-              <h3 class="h-red">Choisissez un nom</h3>
-            </div>
-            <div class="monster-row-right large-btn large-input">
-              <%= f.input :name, label: false %>
-            </div>
+        </div>
+
+        <div class="monster-row">
+
+          <div class="monster-row-content">
+            <h3 class="h-red">Choisis une espèce</h3>
           </div>
 
-            </div>
-      <div id="main-controls">
-        <div class="circle-btn"><%= link_to "Retour",  page_start_intro_path %></div>
-          <div class="large-btn">
-            <div id="inputname">
-              <%= f.submit %>
-
+          <div class="monster-row-right large-btn large-input large-btn-chevron">
+            <%= f.association  :specie, collection: Specie.all, include_blank: :empty, label: false %>
           </div>
+
+        </div>
+
+        <div class="monster-row">
+
+          <div class="monster-row-content">
+            <h3 class="h-red">Choisissez un nom</h3>
+          </div>
+
+          <div class="monster-row-right large-btn large-input">
+            <%= f.input :name, label: false %>
+          </div>
+
+        </div>
+
       </div>
+
+      <div id="main-controls">
+
+        <%= link_to page_start_intro_path do %>
+          <div class="circle-btn">
+              <i class="fa-solid fa-arrow-left"></i>
+          </div>
+        <% end  %>
+
+        <div class="large-btn">
+          <h3><%= f.submit %></h3>
+        </div>
+
+      </div>
+
     </div>
-  </div>
+
+  <% end %>
+
 </div>
-<% end %>
