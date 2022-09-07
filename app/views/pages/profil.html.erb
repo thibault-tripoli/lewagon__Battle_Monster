@@ -15,12 +15,12 @@
           <div class="profil-stat">
 
             <div class="profil-stat-item">
-              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/pog.png" width=40px />
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/pog.png" width="40" />
               <p><%= @user.pc %> PogCoin</p>
             </div>
 
             <div class="profil-stat-item">
-              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/battle.png" width=40px />
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/battle.png" width="40" />
               <% if @battles.count <= 1 %>
                 <p><%= @battles.count %> Combat</p>
               <% else %>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="profil-stat-item">
-              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/medal.png" width=40px />
+              <img src="https://onepage.dropagence.fr/game/bm/img/static/kit/medal.png" width="40" />
               <% if @victory.count <= 1 %>
                 <p><%= @victory.count %> Victoire</p>
               <% else %>
@@ -55,6 +55,7 @@
 
         <div id="profil-droite">
           <div class="profil-last">
+            <img src="https://onepage.dropagence.fr/game/bm/img/static/ugly/tuto.png" width="120" />
             <h2 class="h-red">Votre dernier combat</h2>
             <div class="profil-last-info">
               <% if @battles.last.battle.winner_id == current_user.id %>
