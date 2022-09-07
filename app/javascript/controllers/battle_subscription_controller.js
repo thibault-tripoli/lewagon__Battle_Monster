@@ -163,4 +163,8 @@ export default class extends Controller {
   two(e) { this.next(e, 'two') }
   three(e) { this.next(e, 'three') }
 
+  disconnect() {
+    this.channel.unsubscribe()
+  }
+
 }
