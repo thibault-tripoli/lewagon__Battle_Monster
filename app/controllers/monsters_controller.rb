@@ -9,6 +9,7 @@ class MonstersController < ApplicationController
     @monster.xp = 0
     if @monster.save!
       current_user.onboard = true
+      current_user.save!
       redirect_to page_start_tutoriel_path
     else
       render :start_monster, status: :unprocessable_entity

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>Battle Monster - Massacrez les tous !</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
@@ -8,6 +9,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <% if user_signed_in? && current_user.onboard == false && !current_page?('/page/start_intro') && !current_page?('/page/start_monster') && !current_page?(root_path) %>
+      <meta http-equiv="refresh" content="1;URL=/page/start_intro">
+    <% end %>
+
   </head>
 
   <body>

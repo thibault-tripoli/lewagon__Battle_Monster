@@ -16,8 +16,10 @@
             <div class="circle-btn button-1"><i class="fa-solid fa-house-user"></i></div>
           <% end %>
 
-          <%= link_to destroy_user_session_path, :method => :delete do %>
+
+          <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
             <div class="circle-btn button-1"><i class="fa-solid fa-door-open"></i></div>
+
           <% end %>
         </div>
       </div>

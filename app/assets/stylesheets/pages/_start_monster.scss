@@ -1,0 +1,43 @@
+.monster-specie {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.monster-specie p {
+  max-width: 150px;
+  margin: 0 40px;
+}
+
+.monster-specie-items {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.monster-specie-info {
+  cursor: pointer;
+}
+
+.monster-specie-info-data {
+  border: 5px solid white;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.monster-specie-info-data {
+  position: absolute;
+  width: 250px;
+  background: #2A2A2B;
+  top: 135px;
+  display: none;
+}
+
+.monster-specie-info-data p {
+  margin: 0 20px!important;
+}
+
+.monster-specie-info:hover > .monster-specie-info-data {
+  display: block;
+}
