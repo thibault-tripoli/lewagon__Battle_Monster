@@ -34,7 +34,7 @@
           </div>
 
           <div class="monster-row-right large-btn large-input large-btn-chevron">
-            <%= f.association  :specie, collection: Specie.all, include_blank: :empty, label: false %>
+            <%= f.association  :specie, collection: Specie.all, include_blank: :empty, label: false, defaults: { wrapper: false } %>
           </div>
 
         </div>
@@ -46,7 +46,7 @@
           </div>
 
           <div class="monster-row-right large-btn large-input">
-            <%= f.input :name, label: false %>
+            <%= f.input :name, label: false, defaults: { wrapper: false } %>
           </div>
 
         </div>
@@ -63,8 +63,7 @@
 
 
         <div class="large-btn button-1">
-          <h3><%= f.submit 'valider votre monstrer' %></h3>
-
+          <h3><%= f.submit 'valider' %></h3>
         </div>
 
       </div>

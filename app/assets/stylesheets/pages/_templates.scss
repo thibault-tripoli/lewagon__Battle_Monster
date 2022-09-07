@@ -245,7 +245,7 @@ main.interface {
 
 .big-btn { /* h2 */
   height: 70px;
-  min-width: 250px;
+  min-width: 300px;
 }
 
 .monster-menu .big-btn {
@@ -271,7 +271,6 @@ main.interface {
 .big-btn:hover,
 .master-btn:hover {
   cursor: pointer;
-  opacity: 0.9;
 }
 
 
@@ -279,12 +278,12 @@ main.interface {
 // Buttons on main page
 
 .button-1 {
-
   border: 1px solid #DA4D43;
   border-radius: 50px;
   -webkit-transition: all .15s ease-in-out;
   transition: all .15s ease-in-out;
   color: #DA4D43;
+  height: 65px!important;
 }
 .button-1:hover {
   box-shadow: 0 0 5px 0 #FFBD59 inset, 0 0 10px 1px #FFBD59;
