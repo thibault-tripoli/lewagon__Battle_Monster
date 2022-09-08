@@ -7,6 +7,7 @@ export default class extends Controller {
   static targets = ["round", "rounds"]
 
   connect() {
+    this.interval = setInterval(this.active_decks, 1000);
     this.channel = createConsumer().subscriptions.create(
       { channel: "DeckChannel", id: this.deckIdValue },
       { received: data => {
@@ -42,12 +43,10 @@ export default class extends Controller {
 
             // if fail false
             if (json.fail == false) {
-              console.log('joueur 1 attaque réussi')
               arenaAttack1.addEventListener("animationend", function(){
                 arenaAttack1.style.visibility="hidden";
                 arenaAttack2.style.visibility="hidden";
                 monster2.classList.add('hurt')
-                console.log('joueur 1 attaque end')
               });
 
               monster2.addEventListener("animationend", function(){
@@ -100,12 +99,10 @@ export default class extends Controller {
 
             // if fail false
             if (json.fail == false) {
-              console.log('joueur 2 attaque réussi')
               arenaAttack2.addEventListener("animationend", function(){
                 arenaAttack2.style.visibility="hidden";
                 arenaAttack1.style.visibility="hidden";
                 monster1.classList.add('hurt')
-                console.log('joueur 2 attaque end')
               });
 
               monster1.addEventListener("animationend", function(){
@@ -167,8 +164,24 @@ export default class extends Controller {
   two(e) { this.next(e, 'two') }
   three(e) { this.next(e, 'three') }
 
+
+  active_decks = () => {
+    fetch(window.location.href, { headers: {accept: "application/json"}})
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data.deck1, data.deck2)
+      if (data.deck1 == true || data.deck2 == true) {
+        document.querySelector('#round-controls').classList.add('active-off')
+      } else {
+        document.querySelector('#round-controls').classList.remove('active-off')
+      }
+    })
+
+  }
+
   disconnect() {
     this.channel.unsubscribe()
+    clearInterval(this.interval)
   }
 
 }

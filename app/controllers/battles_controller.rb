@@ -50,6 +50,17 @@ class BattlesController < ApplicationController
     @battle = Battle.find(params[:id])
     @current_deck = @battle.current_deck
     select_deck
+    @my_deck.update(active_at: Time.now)
+    @my_deck.save
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          deck1: @deck1.active_at <= 10.seconds.ago,
+          deck2: @deck2.active_at <= 10.seconds.ago
+        }
+      end
+    end
     redirect_to battle_setup_path(@battle, @my_deck) if @my_deck.empty
     if @battle.status == "pending"
       @battle.status = "started"
@@ -119,13 +130,21 @@ class BattlesController < ApplicationController
     end
   end
 
+  def in_battle
+    select_deck
+    @my_deck.update(active_at: Time.now)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          deck1: @deck1.active_at >= 10.seconds.ago,
+          deck2: @deck2.active_at >= 10.seconds.ago
+        }
+      end
+    end
+  end
+
   def connect
-    # @users = User.where(lived: 5.seconds.ago..)
-    # current_user.update(lived: Time.now)
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @users}
-    # end
     @pending_deck = current_user.decks.joins(:battle).where(battles: {status: "pending"}).last
 
     current_user.update(lived: Time.now)

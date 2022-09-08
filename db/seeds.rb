@@ -20,7 +20,7 @@ base_url = 'https://onepage.dropagence.fr/game/bm/img/static'
 player1_avatar_url = URI.open("#{base_url}/ilyes.jpg")
 player2_avatar_url = URI.open("#{base_url}/tarek.jpg")
 
-player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 10, onboard: true)
+player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0, onboard: true)
 player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0, onboard: true)
 User.create(email: "thib@battle.com", password: "123456", name: "Thibault", pc: 0)
 User.create(email: "jo@battle.com", password: "123456", name: "Jonathan", pc: 0)
@@ -59,20 +59,7 @@ Attack.create!(damage: 40, success: 40, name: "Hypertroll", specie_id: specie_th
 Attack.create!(damage: 100, success: 100, name: "Erreur 500", specie_id: specie_three.id, attack_skin: "#{attack_url}/15.png", attack_btn: "#{attack_url}/btn/15.png", image_num: 15)
 
 puts "creation des stars du jeu..."
-monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id, xp: 20)
-monster_two = Monster.create!(name: "Toktok", user_id: player_two.id, specie_id: specie_two.id)
-
-puts "creation d'une battle + 2 decks"
-battle = Battle.new(pc_win: 0, xp_win: 0, status: "finished", winner_id: 1)
-deck1 = Deck.create!(user: player_one, monster: monster_one, battle: battle, hp: 20)
-_deck2 = Deck.create!(user: player_two, monster: monster_two, battle: battle, hp: 0)
-battle.current_deck = deck1
-battle.save!
-
-# puts "creation d'une 2eme battle + 2 decks"
-# battle2 = Battle.new(pc_win: 500, xp_win: 150, status: "pending", round: 1)
-# Deck.create!(user: player_one, monster: monster_one, battle: battle2)
-# Deck.create!(user: player_two, monster: monster_two, battle: battle2)
-# battle.save!
+_monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id)
+_monster_two = Monster.create!(name: "Toktok", user_id: player_two.id, specie_id: specie_two.id)
 
 puts "Tout a été créé avec succès !"
