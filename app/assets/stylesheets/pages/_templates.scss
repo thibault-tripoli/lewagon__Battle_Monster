@@ -78,6 +78,7 @@ main.interface {
 .avatar {
   width: 62px;
   height: 62px;
+  object-fit: contain;
   border-radius: 50%;
   border: 5px solid #DA4D43;
   background: #DA4D43;

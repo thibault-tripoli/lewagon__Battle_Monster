@@ -1,9 +1,14 @@
 <div id="main-container" class="monster-menu">
 
   <div id="main-container-items">
-    <div class="big-btn button-1"><h2><%= link_to "1 versus 1", connect_path %></h2></div>
+    <%= link_to connect_path do %>
+      <div class="big-btn button-1"><h2>1 versus 1</h2></div>
+    <% end %>
     <div class="big-btn button-1"><h2>1 versus IA</h2></div>
-    <div class="big-btn button-1"><h2><%= link_to "Retour", page_main_path %></h2></div>
+
+    <%= link_to page_main_path do %>
+      <div class="big-btn button-1"><h2>Retour</h2></div>
+    <% end %>
   </div>
 
 </div>

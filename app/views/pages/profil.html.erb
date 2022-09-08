@@ -7,7 +7,7 @@
 
           <div class="profil-info">
 
-            <img src="<%= cl_image_path current_user.avatar.key %>" width="150" class="profil-info-avatar">
+            <img src="<%= cl_image_path @user.avatar.key %>" width="150" class="profil-info-avatar">
             <h1><%= @user.name %></h1>
 
           </div>
@@ -71,7 +71,7 @@
               <img src="https://onepage.dropagence.fr/game/bm/img/static/ugly/tuto.png" />
               <h2 class="h-red">Votre dernier combat</h2>
               <div class="profil-last-info">
-                <% if @battles.last.battle.winner_id == current_user.id %>
+                <% if @battles.last.battle.winner_id == @user.id %>
                   <p>Vous avez gagné !</p>
                 <% else %>
                   <p>Vous avez perdu !</p>
@@ -93,7 +93,9 @@
         </div>
       <% end  %>
       <% if @user == current_user %>
-        <div class="large-btn button-1"><h3>edit</h3></div>
+        <%= link_to edit_user_registration_path do %>
+          <div class="large-btn button-1"><h3>edit</h3></div>
+        <% end %>
       <% end %>
     </div>
   </div>

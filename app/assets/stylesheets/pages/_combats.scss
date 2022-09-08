@@ -87,6 +87,7 @@
   border-color: white;
   margin: 0 20px
 }
+
 #round-controls .avatar {
   border-color: white;
   margin: 30px auto;
@@ -188,6 +189,7 @@
 .attack-avatar img {
   width: 75px;
   height: 75px;
+  object-fit: contain;
   border-radius: 50%;
   border: 5px solid #DA4D43;
   background: #DA4D43;
