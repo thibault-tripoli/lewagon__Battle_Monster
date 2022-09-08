@@ -7,15 +7,21 @@ a:hover {
   color: inherit;
 }
 
+.gap {
+  display: block;
+  width: 100%;
+  height: 25px;
+}
+
 // reset input
-.connect-true input,
-.connect-true input:focus,
-.connect-true .form-control,
-.connect-true .form-control:focus,
-.connect-true .form-control:hover,
-.connect-true .form-select,
-.connect-true .form-select:focus
-.connect-true .form-select:hover {
+.reset-input input,
+.reset-input input:focus,
+.reset-input .form-control,
+.reset-input .form-control:focus,
+.reset-input .form-control:hover,
+.reset-input .form-select,
+.reset-input .form-select:focus
+.reset-input .form-select:hover {
   all: unset!important;
   display: block!important;
   width: 100%!important;
@@ -39,7 +45,7 @@ a:hover {
   text-transform: uppercase!important;
 }
 
-.connect-true .mb-3 {
+.reset-input .mb-3 {
   width: 100%!important;
   height: 100%!important;
   font-size: 24px!important;
@@ -51,12 +57,16 @@ a:hover {
 }
 
 // reset custom style sur sign_in & sign_up
-.connect-false #main-content label,
-.connect-false #main-content input {
-  color: white;
+.reset-false #main-content label,
+.reset-false #main-content input {
   font-family: sans-serif;
   text-shadow: none;
   text-transform: none;
+}
+
+.reset-false #main-content label,
+.reset-false #main-content .btn {
+  color: white;
 }
 
 // Import page-specific CSS files here.

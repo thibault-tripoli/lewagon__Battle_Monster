@@ -1,9 +1,9 @@
-<% class_user = 'connect-false' %>
-<% if user_signed_in? %>
-<% class_user = 'connect-true' %>
+<% reset_input = ' reset-false' %>
+<% if user_signed_in? || current_page?('/users/edit') %>
+<% class_user = ' reset-input' %>
 <% end %>
 
-<main class="interface <%= class_user %>">
+<main class="interface<%= reset_input %>">
   <div id="main-header">
 
     <%= link_to root_path, :class => "d-flex" do %>
