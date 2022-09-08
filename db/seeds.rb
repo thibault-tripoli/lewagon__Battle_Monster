@@ -44,19 +44,19 @@ Attack.create!(damage: 10, success: 100, name: "Kevin", specie_id: specie_one.id
 Attack.create!(damage: 20, success: 80, name: "Jet de Pierre", specie_id: specie_one.id, attack_skin: "#{attack_url}/2.png", attack_btn: "#{attack_url}/btn/1.png", image_num: 2)
 Attack.create!(damage: 30, success: 60, name: "Pluie de cailloux", specie_id: specie_one.id, attack_skin: "#{attack_url}/3.png", attack_btn: "#{attack_url}/btn/1.png", image_num: 3)
 Attack.create!(damage: 40, success: 40, name: "Pierre Feuille Ciseaux", specie_id: specie_one.id, attack_skin: "#{attack_url}/4.png", attack_btn: "#{attack_url}/btn/1.png", image_num: 4)
-Attack.create!(damage: 100, success: 50, name: "Ferrero Rocher", specie_id: specie_one.id, attack_skin: "#{attack_url}/5.png", attack_btn: "#{attack_url}/btn/1.png", image_num: 5)
+Attack.create!(damage: 50, success: 20, name: "Ferrero Rocher", specie_id: specie_one.id, attack_skin: "#{attack_url}/5.png", attack_btn: "#{attack_url}/btn/1.png", image_num: 5)
 
 Attack.create!(damage: 10, success: 100, name: "Hurlement", specie_id: specie_two.id, attack_skin: "#{attack_url}/6.png", attack_btn: "#{attack_url}/btn/6.png", image_num: 6)
 Attack.create!(damage: 20, success: 80, name: "Griffure sanglante", specie_id: specie_two.id, attack_skin: "#{attack_url}/7.png", attack_btn: "#{attack_url}/btn/7.png", image_num: 7)
 Attack.create!(damage: 30, success: 60, name: "Croc blanc", specie_id: specie_two.id, attack_skin: "#{attack_url}/8.png", attack_btn: "#{attack_url}/btn/8.png", image_num: 8)
 Attack.create!(damage: 40, success: 40, name: "Meute enragée", specie_id: specie_two.id, attack_skin: "#{attack_url}/9.png", attack_btn: "#{attack_url}/btn/9.png", image_num: 9)
-Attack.create!(damage: 100, success: 50, name: "Powerwolf", specie_id: specie_two.id, attack_skin: "#{attack_url}/10.png", attack_btn: "#{attack_url}/btn/10.png", image_num: 10)
+Attack.create!(damage: 50, success: 20, name: "Powerwolf", specie_id: specie_two.id, attack_skin: "#{attack_url}/10.png", attack_btn: "#{attack_url}/btn/10.png", image_num: 10)
 
 Attack.create!(damage: 10, success: 100, name: "Baton Toodur", specie_id: specie_three.id, attack_skin: "#{attack_url}/11.png", attack_btn: "#{attack_url}/btn/11.png", image_num: 11)
-Attack.create!(damage: 20, success: 0, name: "Boom Boom", specie_id: specie_three.id, attack_skin: "#{attack_url}/12.png", attack_btn: "#{attack_url}/btn/12.png", image_num: 12)
+Attack.create!(damage: 20, success: 80, name: "Boom Boom", specie_id: specie_three.id, attack_skin: "#{attack_url}/12.png", attack_btn: "#{attack_url}/btn/12.png", image_num: 12)
 Attack.create!(damage: 30, success: 60, name: "Lancé de hache", specie_id: specie_three.id, attack_skin: "#{attack_url}/13.png", attack_btn: "#{attack_url}/btn/13.png", image_num: 13)
 Attack.create!(damage: 40, success: 40, name: "Hypertroll", specie_id: specie_three.id, attack_skin: "#{attack_url}/14.png", attack_btn: "#{attack_url}/btn/14.png", image_num: 14)
-Attack.create!(damage: 100, success: 100, name: "Erreur 500", specie_id: specie_three.id, attack_skin: "#{attack_url}/15.png", attack_btn: "#{attack_url}/btn/15.png", image_num: 15)
+Attack.create!(damage: 50, success: 20, name: "Erreur 500", specie_id: specie_three.id, attack_skin: "#{attack_url}/15.png", attack_btn: "#{attack_url}/btn/15.png", image_num: 15)
 
 puts "creation des stars du jeu..."
 _monster_one = Monster.create!(name: "Durdur", user_id: player_one.id, specie_id: specie_one.id)
