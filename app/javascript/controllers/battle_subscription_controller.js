@@ -161,7 +161,6 @@ export default class extends Controller {
 
   next(e, attack) {
     e.preventDefault();
-    console.log(e)
     fetch(e.target.parentElement.parentElement.href + '?attack=' + attack, {headers: {"Accept": "text/html"}})
       .then(response => response.text())
       .then((data) => {
@@ -179,7 +178,6 @@ export default class extends Controller {
     fetch(window.location.href, { headers: {accept: "application/json"}})
     .then(response => response.json())
     .then((data) => {
-      console.log(data.deck1, data.deck2)
       if (data.deck1 == true || data.deck2 == true) {
         document.querySelector('#round-controls').classList.add('active-off')
       } else {
