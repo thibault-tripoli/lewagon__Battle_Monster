@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+  get 'errors/internal_server_error'
   devise_for :users
   root to: "pages#home"
 
+  # Errors Pages
+  # get "/404", to: "errors#not_found", via: :all
+  # get "/500", to: "errors#internal_server_error", via: :all
   # Battles
+
   resources :battles, only: %i[show create update] do
     get 'next_round/:id', to: 'battles#next_round', as: :next_round
     get "setup", to: 'battles#setup', as: :setup
