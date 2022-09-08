@@ -105,25 +105,6 @@
   to { background-position: -4000px; } /* <-- width of spritesheet*/
 }
 
-.garou.hurt, .golem.hurt {
-  animation: clignote .5s linear 3!important;
-}
-@keyframes clignote {
-  50% { opacity: 0; }
-}
-
-@-webkit-keyframes clignote {
-  50% { opacity: 0; }
-}
-
-@-moz-keyframes clignote {
-  50% { opacity: 0; }
-}
-
-@-o-keyframes clignote {
-  50% { opacity: 0; }
-}
-
 .golem.left.die {
   background: url("http://onepage.dropagence.fr/game/bm/img/anim/golem/left/golem-die.png");
   background-size: cover;
@@ -218,7 +199,7 @@
   to { background-position: -4000px; } /* <-- width of spritesheet*/
 }
 
-.garou.hurt, .golem.hurt {
+.garou.hurt, .golem.hurt, .troll.hurt {
   animation: clignote .5s linear 3!important;
 }
 @keyframes clignote {

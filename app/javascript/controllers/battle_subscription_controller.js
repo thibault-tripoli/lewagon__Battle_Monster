@@ -42,10 +42,12 @@ export default class extends Controller {
 
             // if fail false
             if (json.fail == false) {
+              console.log('joueur 1 attaque réussi')
               arenaAttack1.addEventListener("animationend", function(){
                 arenaAttack1.style.visibility="hidden";
                 arenaAttack2.style.visibility="hidden";
                 monster2.classList.add('hurt')
+                console.log('joueur 1 attaque end')
               });
 
               monster2.addEventListener("animationend", function(){
@@ -98,10 +100,12 @@ export default class extends Controller {
 
             // if fail false
             if (json.fail == false) {
+              console.log('joueur 2 attaque réussi')
               arenaAttack2.addEventListener("animationend", function(){
                 arenaAttack2.style.visibility="hidden";
                 arenaAttack1.style.visibility="hidden";
                 monster1.classList.add('hurt')
+                console.log('joueur 2 attaque end')
               });
 
               monster1.addEventListener("animationend", function(){
