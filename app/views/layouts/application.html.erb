@@ -11,7 +11,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
     <% if user_signed_in? && current_user.onboard == false && !current_page?('/page/start_intro') && !current_page?('/page/start_monster') && !current_page?(root_path) %>
-      <meta http-equiv="refresh" content="1;URL=/page/start_intro">
+      <meta http-equiv="refresh" content="0;URL=/page/start_intro">
+    <% end %>
+
+    <% if user_signed_in? && current_page?('/page/start_intro') && current_user.onboard == true || user_signed_in? && current_page?('/page/start_monster') && current_user.onboard == true %>
+      <meta http-equiv="refresh" content="0;URL=/page/main">
     <% end %>
 
   </head>

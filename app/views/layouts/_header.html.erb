@@ -10,7 +10,7 @@
       <img id="main-logo" src="https://onepage.dropagence.fr/game/bm/img/logo-bm.png">
     <% end %>
 
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user.onboard == true %>
       <div id="main-player">
         <h2><%= current_user.name %></h2>
         <div class="main-player-menu">
