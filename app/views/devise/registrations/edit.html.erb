@@ -3,7 +3,7 @@
     <div id="main-content">
 
 
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <h2>Editer mon profil</h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
 
@@ -31,19 +31,18 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Update" %>
+          <%= f.button :submit, "Mettre à jour", class: 'btn-boot' %>
         </div>
       <% end %>
       <div class="gap"></div>
 
-      <h3>Cancel my account</h3>
+      <h3>Supprimer mon compte</h3>
       <div class="d-flex align-items-center">
-        <div>Unhappy?</div>
-        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+        <%= button_to "Supprimer", registration_path(resource_name), data: { confirm: "Vraiement ?" }, method: :delete, class: "btn btn-link" %>
       </div>
 
       <div class="gap"></div>
-      <%= link_to "Back", :back %>
+      <div class="btn btn-boot" style="color:white"><%= link_to "Retour", profil_path(current_user) %></div>
    </div>
   </div>
 </div>

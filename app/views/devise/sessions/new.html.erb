@@ -2,13 +2,13 @@
   <div id="main-container-items">
     <div id="main-content">
 
-      <h1>Connexion</h1>
+      <h1>Connexion à Battle Monster</h1>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
 
         <%= f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" } %>
         <%= f.input :password, required: false, input_html: { autocomplete: "current-password" } %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-        <%= f.button :submit, "Connexion" %>
+        <%= f.button :submit, "Connexion", class: 'btn-boot' %>
 
       <% end %>
 

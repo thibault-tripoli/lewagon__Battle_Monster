@@ -8,7 +8,13 @@
           <div class="profil-info">
 
             <img src="<%= cl_image_path @user.avatar.key %>" width="150" class="profil-info-avatar">
-            <h1><%= @user.name %></h1>
+            <h1>Profil de <%= @user.name %></h1>
+
+            <% if @user == current_user %>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa-solid fa-pen pen-edit"></i>
+              <% end %>
+            <% end %>
 
           </div>
 
@@ -92,11 +98,6 @@
           <i class="fa-solid fa-arrow-left"></i>
         </div>
       <% end  %>
-      <% if @user == current_user %>
-        <%= link_to edit_user_registration_path do %>
-          <div class="large-btn button-1"><h3>edit</h3></div>
-        <% end %>
-      <% end %>
     </div>
   </div>
 </div>

@@ -42,7 +42,14 @@ a:hover {
   border: none!important;
   box-shadow: none!important;
   font-family:'Teko', sans-serif!important;
-  text-transform: uppercase!important;
+  text-transform: capitalize!important;
+}
+
+.reset-input .form-select,
+.reset-input .form-select:focus
+.reset-input .form-select:hover {
+  background-color: #DA4D43 !important;
+  max-width: 200px!important;
 }
 
 .reset-input .mb-3 {
@@ -67,6 +74,14 @@ a:hover {
 .reset-false #main-content label,
 .reset-false #main-content .btn {
   color: white;
+}
+
+.btn-boot {
+  border: 1px solid white
+}
+
+.btn-boot:hover {
+  opacity: 0.8
 }
 
 // Import page-specific CSS files here.
