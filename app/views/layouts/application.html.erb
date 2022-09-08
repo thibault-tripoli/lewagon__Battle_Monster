@@ -10,6 +10,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <% if user_signed_in? && current_user.onboard == false && !current_page?('/page/start_intro') && !current_page?('/page/start_monster') && !current_page?(root_path) %>
       <meta http-equiv="refresh" content="0;URL=/page/start_intro">
     <% end %>

@@ -1,0 +1,6 @@
+meta_product_name: "Battle Monster"
+meta_title: "Battle Monster - Product tagline"
+meta_description: "Gagne tes combats avec tes monstres!"
+meta_image: "Massacrez-Les-Tous!.png"  should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
+# https://lewagon-alumni.slack.com/files/U03NV1FEXR7/F041C8MNEP7/massacrez_les_tous__.png
