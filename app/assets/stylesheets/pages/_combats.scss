@@ -12,7 +12,12 @@
 
 #combats-title {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+}
+
+#combats-title .circle-btn {
+  background: #2A2A2B;
+  border: 4px solid white
 }
 
 #combats-title h1 {
