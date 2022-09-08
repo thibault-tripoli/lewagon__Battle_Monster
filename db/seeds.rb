@@ -34,9 +34,9 @@ player_two.save!
 puts "creation du bestiaire"
 
 monster_url = 'https://onepage.dropagence.fr/game/bm/img/static/specie'
-specie_one = Specie.create!(name: "golem", monster_skin: "#{monster_url}/golem.png", monster_head: "#{monster_url}/golem-head.png", info: "info golem")
-specie_two = Specie.create!(name: "garou", monster_skin: "#{monster_url}/garou.png", monster_head: "#{monster_url}/garou-head.png", info: "info garou")
-specie_three = Specie.create!(name: "troll", monster_skin: "#{monster_url}/troll.png", monster_head: "#{monster_url}/troll-head.png", info: "info troll")
+specie_one = Specie.create!(name: "golem", monster_skin: "#{monster_url}/golem.png", monster_head: "#{monster_url}/golem-head.png", info: "Tu te sens l’âme d’un Gollum sous testo, c’est par ici!")
+specie_two = Specie.create!(name: "garou", monster_skin: "#{monster_url}/garou.png", monster_head: "#{monster_url}/garou-head.png", info: "Tu kiffes Taylor Lautner, le garou est fait pour toi!")
+specie_three = Specie.create!(name: "troll", monster_skin: "#{monster_url}/troll.png", monster_head: "#{monster_url}/troll-head.png", info: "Twitter est ton Dieu, impose tes idées bienveillantes à coup de bâton!")
 
 attack_url = 'https://onepage.dropagence.fr/game/bm/img/static/attack'
 
