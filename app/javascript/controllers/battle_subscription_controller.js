@@ -29,8 +29,6 @@ export default class extends Controller {
 
           arenaAttack1.style.background = "url('https://onepage.dropagence.fr/game/bm/img/static/attack/" + attackSkin + "')";
           arenaAttack2.style.background = "url('https://onepage.dropagence.fr/game/bm/img/static/attack/" + attackSkin + "')";
-          // arenaAttack1.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
-          // arenaAttack2.innerHTML = "<h3>" + json.current_attack.name + "</h3>"
 
           if (json.deckID == this.deck1IdValue) {
             // start
@@ -51,6 +49,12 @@ export default class extends Controller {
 
               monster2.addEventListener("animationend", function(){
                 document.querySelector('.prog-2').style.width="" + json.deck2_HP + "%"
+                // color HP deck 2
+                if (json.deck2_HP <= 25 ) {
+                  document.querySelector('.prog-2').style.backgroundColor="red"
+                } else if (json.deck2_HP > 25 && json.deck2_HP < 50) {
+                  document.querySelector('.prog-2').style.backgroundColor="orange"
+                }
               });
 
               document.querySelector('#progress2').addEventListener("transitionend", function(){
@@ -107,6 +111,12 @@ export default class extends Controller {
 
               monster1.addEventListener("animationend", function(){
                 document.querySelector('.prog-1').style.width="" + json.deck1_HP + "%"
+                // color HP deck 1
+                if (json.deck1_HP <= 25 ) {
+                  document.querySelector('.prog-1').style.backgroundColor="red"
+                } else if (json.deck1_HP > 25 && json.deck1_HP < 50 ) {
+                  document.querySelector('.prog-1').style.backgroundColor="orange"
+                }
               });
 
               document.querySelector('#progress1').addEventListener("transitionend", function(){
@@ -176,7 +186,6 @@ export default class extends Controller {
         document.querySelector('#round-controls').classList.remove('active-off')
       }
     })
-
   }
 
   disconnect() {

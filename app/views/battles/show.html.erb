@@ -1,4 +1,17 @@
 <div id="body-combats">
+
+  <% if @deck2.hp <= 25 %>
+    <style>#progress2.blue span { background-color: red }</style>
+  <% elsif @deck2.hp > 25 && @deck2.hp < 50 %>
+    <style>#progress2.blue span { background-color: orange }</style>
+  <% end %>
+
+  <% if @deck1.hp <= 25 %>
+    <style>#progress1.blue span { background-color: red }</style>
+  <% elsif @deck1.hp > 25 && @deck1.hp < 50 %>
+    <style>#progress1.blue span { background-color: orange }</style>
+  <% end %>
+
   <div id="container-combats" class="container">
     <div class="battle"
       data-controller="battle-subscription"
