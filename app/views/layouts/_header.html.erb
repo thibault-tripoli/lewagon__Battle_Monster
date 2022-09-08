@@ -1,6 +1,6 @@
 <% reset_input = ' reset-false' %>
-<% if user_signed_in? || current_page?('/users/edit') %>
-<% class_user = ' reset-input' %>
+<% if user_signed_in? %>
+  <% reset_input = ' reset-input' %>
 <% end %>
 
 <main class="interface<%= reset_input %>">
