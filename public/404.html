@@ -3,65 +3,214 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    /* Couleurs
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+black  -> #2A2A2B
+red    -> #DA4D43
+yellow -> #FFBD59
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+/** Global **/
+h1, h2, h3, h4, h5, h6, input {
+  margin: 0;
+  padding:0;
+  color: white;
+  font-family: 'Teko', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+h1 {font-size: 48px; }
+h2 {font-size: 40px }
+h3 {font-size: 32px }
+h4 {font-size: 24px }
+h5 {font-size: 16px }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.h-red { color:#DA4D43; text-shadow: none; }
+.h-yellow { color:#FFBD59!important; text-shadow: none; }
+
+p { font-size: 24px!important; font-family:'Yanone Kaffeesatz', sans-serif; color: white }
+
+/* Layout main */
+
+main.interface {
+  width: 100vw;
+  height: 100vh;
+  background:  url(https://onepage.dropagence.fr/game/bm/img/bg/bg-side.png), url(https://onepage.dropagence.fr/game/bm/img/bg/bg-main-dark.png);
+  background-size: contain, cover;
+  background-repeat: no-repeat, no-repeat;
+  background-position: right bottom, center center;
+}
+
+#main-header, #main-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+#main-header    {height: 20%;}
+#main-container {height: 75%;}
+#main-container h1 { margin-bottom: 30px;}
+
+#main-container.monster-menu { align-items: end; }
+#main-container.monster-block { align-items: center; }
+
+/* Layout header */
+
+#main-logo {
+  max-width:180px;
+  object-fit: contain;
+}
+
+#main-player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#main-player h2 {
+  padding-right: 30px;
+}
+
+#main-player .main-player-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 220px;
+}
+
+#main-player img,
+.avatar {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 5px solid #DA4D43;
+  background: #DA4D43;
+}
+
+/* Layout monster-block */
+
+#main-content {
+  height: 64vh;
+  width: 58vw;
+  background: #2A2A2B;
+  border: 15px solid white;
+  border-radius: 50px;
+  padding: 50px;
+  overflow: scroll;
+}
+
+// hide scroll
+#main-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#main-content {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+#main-container-items {
+  position: relative;
+}
+
+
+
+
+.large-btn,
+.big-btn,
+.master-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 50px;
+  text-align: center;
+  background: #DA4D43;
+}
+
+.large-btn { /* h3 */
+  height: 60px;
+  min-width: 300px;
+}
+
+.large-btn input {
+  /* h3 */
+  padding: 0;
+  border-radius: 0;
+  text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+
+
+
+.master-btn h1,
+.big-btn h2,
+.large-btn h3 { margin-bottom: -5px!important; width: 100% }
+
+.large-btn:hover,
+.big-btn:hover,
+.master-btn:hover {
+  cursor: pointer;
+}
+
+// HOVER EFFECT ON BUTTONS
+// Buttons on main page
+
+.button-1 {
+  border: 1px solid #DA4D43;
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: #DA4D43;
+  height: 65px!important;
+}
+.button-1:hover {
+  box-shadow: 0 0 5px 0 #FFBD59 inset, 0 0 10px 1px #FFBD59;
+  border: 1px solid #FFBD59;
+}
+
+
+#mob1 {
+  transform:scaleX(-1);
+}
+.mob-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#title400 {
+  text-align: center;
+}
+.dialog{
+  display: flex;
+  justify-content: center;
+}
+#btn-retourmenu{
+  width:350px;
+  text-align: center;
+}
+
   </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+  <body class="rails-default-error-page">
+    <div id="main-container" class="monster-block">
+      <div id="main-container-items">
+        <div id="main-content">
+          <h1 id="title400" >Une erreur est survenue.</h1>
+          <div class="mob-message">
+            <img id="mob1" src="https://onepage.dropagence.fr/game/bm/img/static/ugly/brou.png" alt=""width="150px" height="150px">
+            <p>Des équipes de trolls ont été envoyé à la rescousse</p>
+            <img src="https://onepage.dropagence.fr/game/bm/img/static/ugly/cleytus.png" alt="" width="150px" height="150px">
+          </div
+    <!-- This file lives in public/404.html -->
+          <div class="dialog"><br><br><br><br>
+            <div class="large-btn button-1" id="btn-retourmenu">
+              <p>Retourner sur le menu principal</p>
+          </div>
+  </body>
 </html>
