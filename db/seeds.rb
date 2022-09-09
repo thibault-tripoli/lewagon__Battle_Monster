@@ -20,18 +20,26 @@ base_url = 'https://onepage.dropagence.fr/game/bm/img/static'
 player1_avatar_url = URI.open("#{base_url}/ilyes.jpg")
 player2_avatar_url = URI.open("#{base_url}/tarek.jpg")
 player3_avatar_url = URI.open("#{base_url}/arnold.jpg")
+player4_avatar_url = URI.open("#{base_url}/thibault.jpg")
+player5_avatar_url = URI.open("#{base_url}/jonathan.jpg")
 
-player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0, onboard: true)
+player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0, onboard: false)
 player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0, onboard: true)
 player_three = User.new(email: "arnold@battle.com", password: "123456", name: "Arnold", pc: 0, onboard: true)
+player_four = User.new(email: "thibault@battle.com", password: "123456", name: "Thibault", pc: 0, onboard: false)
+player_five = User.new(email: "jonathan@battle.com", password: "123456", name: "Jonathan", pc: 0, onboard: false)
 
-player_one.avatar.attach(io: player1_avatar_url, filename: 'tarek_avatar.jpg', content_type: 'image/jpg')
-player_two.avatar.attach(io: player2_avatar_url, filename: 'ilyes_avatar.jpg', content_type: 'image/jpg')
+player_one.avatar.attach(io: player1_avatar_url, filename: 'ilyes_avatar.jpg', content_type: 'image/jpg')
+player_two.avatar.attach(io: player2_avatar_url, filename: 'tarek_avatar.jpg', content_type: 'image/jpg')
 player_three.avatar.attach(io: player3_avatar_url, filename: 'arnold_avatar.jpg', content_type: 'image/jpg')
+player_four.avatar.attach(io: player4_avatar_url, filename: 'thibault_avatar.jpg', content_type: 'image/jpg')
+player_five.avatar.attach(io: player5_avatar_url, filename: 'jonathan_avatar.jpg', content_type: 'image/jpg')
 
 player_one.save!
 player_two.save!
 player_three.save!
+player_four.save!
+player_five.save!
 
 puts "creation du bestiaire"
 
@@ -61,8 +69,8 @@ Attack.create!(damage: 40, success: 40, name: "Hypertroll", specie_id: specie_th
 Attack.create!(damage: 100, success: 100, name: "Erreur 500", specie_id: specie_three.id, attack_skin: "#{attack_url}/15.png", attack_btn: "#{attack_url}/btn/15.png", image_num: 15)
 
 puts "creation des stars du jeu..."
-_monster_one = Monster.create!(name: "Toktok", user_id: player_one.id, specie_id: specie_three.id)
-_monster_two = Monster.create!(name: "Durdur", user_id: player_two.id, specie_id: specie_one.id)
+# _monster_one = Monster.create!(name: "Toktok", user_id: player_one.id, specie_id: specie_three.id)
+_monster_two = Monster.create!(name: "Jackson", user_id: player_two.id, specie_id: specie_two.id)
 _monster_three = Monster.create!(name: "Michael", user_id: player_three.id, specie_id: specie_two.id)
 
 puts "Tout a été créé avec succès !"
