@@ -1,0 +1,29 @@
+<div class="player circle-btn">
+  <audio loop src="https://onepage.dropagence.fr/game/bm/loop.wav"></audio>
+  <i id="play" class="fa-solid fa-volume-xmark"></i>
+
+  <script>
+
+    const audio = document.querySelector('audio')
+    const button = document.querySelector('#play')
+
+    let isPlaying = false;
+
+    button.onclick = () => {
+      isPlaying ? audio.pause() : audio.play();
+    };
+
+    audio.onplaying = () => {
+      isPlaying = true;
+    };
+    audio.onpause = () => {
+      isPlaying = false;
+    };
+
+    button.addEventListener("click", function(){
+      button.classList.toggle('fa-volume-xmark');
+      button.classList.toggle('fa-volume-high');
+    })
+
+  </script>
+</div>
