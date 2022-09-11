@@ -24,7 +24,7 @@ player4_avatar_url = URI.open("#{base_url}/thibault.jpg")
 player5_avatar_url = URI.open("#{base_url}/jonathan.jpg")
 
 player_one = User.new(email: "ilyes@battle.com", password: "123456", name: "Ilyes", pc: 0, onboard: false)
-player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0, onboard: true)
+player_two = User.new(email: "tarek@battle.com", password: "123456", name: "Tarek", pc: 0, onboard: false)
 player_three = User.new(email: "arnold@battle.com", password: "123456", name: "Arnold", pc: 0, onboard: true)
 player_four = User.new(email: "thibault@battle.com", password: "123456", name: "Thibault", pc: 0, onboard: false)
 player_five = User.new(email: "jonathan@battle.com", password: "123456", name: "Jonathan", pc: 0, onboard: false)
@@ -56,21 +56,21 @@ Attack.create!(damage: 30, success: 60, name: "Pluie de cailloux", specie_id: sp
 Attack.create!(damage: 40, success: 40, name: "Pierre Feuille Ciseaux", specie_id: specie_one.id, attack_skin: "#{attack_url}/4.png", attack_btn: "#{attack_url}/btn/1.png", image_num: 4)
 Attack.create!(damage: 50, success: 20, name: "Ferrero Rocher", specie_id: specie_one.id, attack_skin: "#{attack_url}/5.png", attack_btn: "#{attack_url}/btn/1.png", image_num: 5)
 
-Attack.create!(damage: 30, success: 100, name: "Thriller", specie_id: specie_two.id, attack_skin: "#{attack_url}/6.png", attack_btn: "#{attack_url}/btn/6.png", image_num: 6)
-Attack.create!(damage: 30, success: 100, name: "Griffure sanglante", specie_id: specie_two.id, attack_skin: "#{attack_url}/7.png", attack_btn: "#{attack_url}/btn/7.png", image_num: 7)
-Attack.create!(damage: 30, success: 100, name: "Croc blanc", specie_id: specie_two.id, attack_skin: "#{attack_url}/8.png", attack_btn: "#{attack_url}/btn/8.png", image_num: 8)
-Attack.create!(damage: 30, success: 100, name: "Meute enragée", specie_id: specie_two.id, attack_skin: "#{attack_url}/9.png", attack_btn: "#{attack_url}/btn/9.png", image_num: 9)
-Attack.create!(damage: 30, success: 100, name: "Powerwolf", specie_id: specie_two.id, attack_skin: "#{attack_url}/10.png", attack_btn: "#{attack_url}/btn/10.png", image_num: 10)
+Attack.create!(damage: 10, success: 100, name: "Thriller", specie_id: specie_two.id, attack_skin: "#{attack_url}/6.png", attack_btn: "#{attack_url}/btn/6.png", image_num: 6)
+Attack.create!(damage: 20, success: 80, name: "Griffure sanglante", specie_id: specie_two.id, attack_skin: "#{attack_url}/7.png", attack_btn: "#{attack_url}/btn/7.png", image_num: 7)
+Attack.create!(damage: 30, success: 60, name: "Croc blanc", specie_id: specie_two.id, attack_skin: "#{attack_url}/8.png", attack_btn: "#{attack_url}/btn/8.png", image_num: 8)
+Attack.create!(damage: 40, success: 40, name: "Meute enragée", specie_id: specie_two.id, attack_skin: "#{attack_url}/9.png", attack_btn: "#{attack_url}/btn/9.png", image_num: 9)
+Attack.create!(damage: 50, success: 20, name: "Powerwolf", specie_id: specie_two.id, attack_skin: "#{attack_url}/10.png", attack_btn: "#{attack_url}/btn/10.png", image_num: 10)
 
-Attack.create!(damage: 30, success: 100, name: "Baton Toodur", specie_id: specie_three.id, attack_skin: "#{attack_url}/11.png", attack_btn: "#{attack_url}/btn/11.png", image_num: 11)
-Attack.create!(damage: 20, success: 0, name: "Boom Boom", specie_id: specie_three.id, attack_skin: "#{attack_url}/12.png", attack_btn: "#{attack_url}/btn/12.png", image_num: 12)
+Attack.create!(damage: 10, success: 100, name: "Baton Toodur", specie_id: specie_three.id, attack_skin: "#{attack_url}/11.png", attack_btn: "#{attack_url}/btn/11.png", image_num: 11)
+Attack.create!(damage: 20, success: 80, name: "Boom Boom", specie_id: specie_three.id, attack_skin: "#{attack_url}/12.png", attack_btn: "#{attack_url}/btn/12.png", image_num: 12)
 Attack.create!(damage: 30, success: 60, name: "Lancé de hache", specie_id: specie_three.id, attack_skin: "#{attack_url}/13.png", attack_btn: "#{attack_url}/btn/13.png", image_num: 13)
 Attack.create!(damage: 40, success: 40, name: "Hypertroll", specie_id: specie_three.id, attack_skin: "#{attack_url}/14.png", attack_btn: "#{attack_url}/btn/14.png", image_num: 14)
-Attack.create!(damage: 100, success: 100, name: "Erreur 500", specie_id: specie_three.id, attack_skin: "#{attack_url}/15.png", attack_btn: "#{attack_url}/btn/15.png", image_num: 15)
+Attack.create!(damage: 50, success: 20, name: "Erreur 500", specie_id: specie_three.id, attack_skin: "#{attack_url}/15.png", attack_btn: "#{attack_url}/btn/15.png", image_num: 15)
 
 puts "creation des stars du jeu..."
 # _monster_one = Monster.create!(name: "Toktok", user_id: player_one.id, specie_id: specie_three.id)
-_monster_two = Monster.create!(name: "Jackson", user_id: player_two.id, specie_id: specie_two.id)
+# _monster_two = Monster.create!(name: "Jackson", user_id: player_two.id, specie_id: specie_two.id)
 _monster_three = Monster.create!(name: "Michael", user_id: player_three.id, specie_id: specie_two.id)
 
 puts "Tout a été créé avec succès !"
